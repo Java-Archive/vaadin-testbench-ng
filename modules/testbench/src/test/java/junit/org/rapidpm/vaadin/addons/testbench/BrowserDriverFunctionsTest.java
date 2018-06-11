@@ -15,7 +15,7 @@ public class BrowserDriverFunctionsTest {
         .apply(BrowserDriverFunctions.CONFIG_FOLDER + "config").get();
 
     boolean isLocaleOrRapidSelnoid = "locale".equals(properties.get("unittesting.target"))
-        || "selenoid.rapidpm.org:80".equals(properties.get("unittesting.target"));
+        || "selenoid.rapidpm.org".equals(properties.get("unittesting.target"));
     assertTrue(isLocaleOrRapidSelnoid);
   }
 }
