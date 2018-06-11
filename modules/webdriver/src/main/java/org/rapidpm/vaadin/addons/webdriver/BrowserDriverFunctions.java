@@ -1,6 +1,21 @@
 package org.rapidpm.vaadin.addons.webdriver;
 
-import com.github.webdriverextensions.DriverPathLoader;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toList;
+import static org.rapidpm.frp.matcher.Case.match;
+import static org.rapidpm.frp.matcher.Case.matchCase;
+import static org.rapidpm.frp.memoizer.Memoizer.memoize;
+import static org.rapidpm.frp.model.Result.failure;
+import static org.rapidpm.frp.model.Result.success;
+//import com.vaadin.testbench.TestBench;
+import java.net.URL;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,24 +34,7 @@ import org.rapidpm.frp.model.Result;
 import org.rapidpm.frp.model.Triple;
 import org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfig;
 import org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfigFactory;
-
-import java.net.URL;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.toList;
-import static org.rapidpm.frp.matcher.Case.match;
-import static org.rapidpm.frp.matcher.Case.matchCase;
-import static org.rapidpm.frp.memoizer.Memoizer.memoize;
-import static org.rapidpm.frp.model.Result.failure;
-import static org.rapidpm.frp.model.Result.success;
-//import com.vaadin.testbench.TestBench;
+import com.github.webdriverextensions.DriverPathLoader;
 
 /**
  *
@@ -130,6 +128,7 @@ public interface BrowserDriverFunctions extends HasLogger {
   static CheckedSupplier<WebDriver> remoteWebDriverInstance(DesiredCapabilities desiredCapability,
                                                             final String ip) {
     return () -> {
+      Logger.getLogger(BrowserDriverFunctions.class).info("Create RemoteWebdriver to " + ip + " for browser: " + desiredCapability);
       final URL url = new URL(ip);
       return new RemoteWebDriver(url, desiredCapability);
     };
