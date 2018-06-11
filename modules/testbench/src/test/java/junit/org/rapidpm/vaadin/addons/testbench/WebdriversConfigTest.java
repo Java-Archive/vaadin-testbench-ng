@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Properties;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.rapidpm.frp.model.Result;
 import org.rapidpm.vaadin.addons.webdriver.conf.GridConfig;
@@ -47,19 +48,19 @@ public class WebdriversConfigTest {
 
     assertEquals("http://localhost:4444/wd/hub", genericGridConfig.getTarget());
     assertEquals(Type.GENERIC, genericGridConfig.getType());
-    
+
     List<DesiredCapabilities> desiredCapabilities = genericGridConfig.getDesiredCapabilities();
 
     assertEquals(4, desiredCapabilities.size());
-    
+
     GridConfig selenoidGridConfig = config.getGridConfigs().stream()
         .filter(grid -> grid.getName().equals("selenoid")).findFirst().get();
-    
+
     List<DesiredCapabilities> slenoidDesiredCapabilities = selenoidGridConfig.getDesiredCapabilities();
 
     assertEquals(2, slenoidDesiredCapabilities.size());
     assertEquals(Type.SELENOID, selenoidGridConfig.getType());
-    
+
     for(DesiredCapabilities desiredCapability: slenoidDesiredCapabilities) {
       assertEquals(true, desiredCapability.asMap().get("enableVNC"));
       assertEquals(true, desiredCapability.asMap().get("enableVideo"));
@@ -83,7 +84,7 @@ public class WebdriversConfigTest {
         genericGridConfig.getTarget());
     assertEquals(Type.BROWSERSTACK, genericGridConfig.getType());
   }
-  
+
   @Test
   @DisplayName("build saucelabs config")
   void test004() {
@@ -94,11 +95,31 @@ public class WebdriversConfigTest {
 
     assertEquals(1, config.getGridConfigs().size());
 
-    GridConfig genericGridConfig = config.getGridConfigs().stream()
+    GridConfig sauceLabsGridConfig = config.getGridConfigs().stream()
         .filter(grid -> grid.getName().equals("saucelabs")).findFirst().get();
 
     assertEquals("https://dve81:abc@ondemand.saucelabs.com:443/wd/hub",
-        genericGridConfig.getTarget());
-    assertEquals(Type.SAUCELABS, genericGridConfig.getType());
+        sauceLabsGridConfig.getTarget());
+    assertEquals(Type.SAUCELABS, sauceLabsGridConfig.getType());
+  }
+
+  @Test
+  @DisplayName("build grid config without os and versions")
+  void test005() {
+    Result<Properties> apply = propertyReader().apply(CONFIG_FOLDER + "config-005");
+    Properties configProperties = apply.get();
+
+    WebdriversConfig config = factory.createFromProperies(configProperties);
+
+    assertEquals(1, config.getGridConfigs().size());
+
+    GridConfig genericGridConfig = config.getGridConfigs().stream()
+        .filter(grid -> grid.getName().equals("generic")).findFirst().get();
+
+    assertEquals(2, genericGridConfig.getDesiredCapabilities().size());
+    assertEquals(Platform.ANY, genericGridConfig.getDesiredCapabilities().get(0).getPlatform());
+    assertEquals("", genericGridConfig.getDesiredCapabilities().get(0).getVersion());
+    assertEquals(Platform.ANY, genericGridConfig.getDesiredCapabilities().get(1).getPlatform());
+    assertEquals("", genericGridConfig.getDesiredCapabilities().get(1).getVersion());
   }
 }
