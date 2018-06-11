@@ -3,6 +3,7 @@ package junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 import org.apache.meecrowave.Meecrowave;
 import org.apache.meecrowave.junit5.MeecrowaveConfig;
 import org.apache.meecrowave.testing.ConfigurationInject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ServletContainerExtension;
@@ -55,6 +56,7 @@ public class DemoTest {
   private Meecrowave.Builder config;
 
   @Test
+  @Disabled
   public void test001() {
     final Client client = ClientBuilder.newClient();
     try {
