@@ -15,5 +15,15 @@ public interface VaadinPageObject extends PageObject {
     return () -> url().get() + "?debug";
   }
 
+  default Supplier<String> urlSwitchToDebugApp() {
+    return () -> url().get() + "?debug&restartApplication";
+  }
 
+  default void switchToDebugMode() {
+    getDriver().get(urlSwitchToDebugApp().get());
+  }
+
+  default void restartApplication() {
+    getDriver().get(urlRestartApp().get());
+  }
 }

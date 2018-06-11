@@ -20,14 +20,6 @@ public abstract class AbstractVaadinPageObject
     setDriver(testCase.getDriver());
   }
 
-  public void switchToDebugMode() {
-    getDriver().get(url().get() + "?debug&restartApplication");
-  }
-
-  public void restartApplication() {
-    getDriver().get(urlRestartApp().get());
-  }
-
   public WithID<TextFieldElement> textField() {
     return id -> testCase.$(TextFieldElement.class).id(id);
   }

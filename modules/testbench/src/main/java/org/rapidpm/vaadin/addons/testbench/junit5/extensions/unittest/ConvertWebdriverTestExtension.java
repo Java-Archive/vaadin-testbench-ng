@@ -1,6 +1,5 @@
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.unittest;
 
-import com.vaadin.testbench.TestBench;
 import com.vaadin.testbench.TestBenchDriverProxy;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
@@ -8,6 +7,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.frp.model.Result;
 
+import static com.vaadin.testbench.TestBench.createDriver;
 import static org.rapidpm.vaadin.addons.webdriver.junit5.WebdriverExtensionFunctions.*;
 
 public class ConvertWebdriverTestExtension implements BeforeEachCallback, AfterEachCallback, HasLogger {
@@ -21,7 +21,7 @@ public class ConvertWebdriverTestExtension implements BeforeEachCallback, AfterE
         .ifPresentOrElse(
             webDriver -> {
               removeWebDriver().accept(context);
-              storeWebDriver().accept(context, TestBench.createDriver(webDriver));
+              storeWebDriver().accept(context, createDriver(webDriver));
             },
             failed -> logger().warning(failed)
         );

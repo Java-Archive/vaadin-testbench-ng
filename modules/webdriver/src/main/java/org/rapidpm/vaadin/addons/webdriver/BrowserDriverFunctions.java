@@ -130,20 +130,12 @@ public interface BrowserDriverFunctions extends HasLogger {
   static CheckedSupplier<WebDriver> remoteWebDriverInstance(DesiredCapabilities desiredCapability,
                                                             final String ip) {
     return () -> {
-      try {
-        final URL             url             = new URL(ip);
-        final RemoteWebDriver remoteWebDriver = new RemoteWebDriver(url, desiredCapability);
-//        return TestBench.createDriver(remoteWebDriver); // remove TB dependency (proxy)
-        return remoteWebDriver;
-      } catch (Exception e) {
-        Logger.getLogger(BrowserDriverFunctions.class).severe(
-            "Failure creating remote driver for browser " + desiredCapability.getBrowserName()
-            + "@" + ip, e);
-        throw e;
-      }
+      final URL url = new URL(ip);
+      return new RemoteWebDriver(url, desiredCapability);
     };
   }
 
+  //TODO List<WebDriver> -> List<Supplier<WebDriver>>
   static Supplier<List<WebDriver>> webDriverInstances() {
     return () -> {
 

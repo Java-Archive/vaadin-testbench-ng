@@ -55,6 +55,8 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
+
+
       <!--<dependency>-->
       <!--<groupId>org.rapidpm</groupId>-->
       <!--<artifactId>rapidpm-dependencies-core-logger</artifactId>-->
@@ -153,6 +155,11 @@
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-testbench-ng-m-container-initializer-rapidpm</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.rapidpm</groupId>
+        <artifactId>rapidpm-testbench-ng-m-container-initializer-meecrowave</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

@@ -14,5 +14,6 @@
 		<module>initializer-rapidpm</module>
 		<module>initializer-spring-boot</module>
 		<module>initializer-none</module>
+		<module>initializer-meecrowave</module>
 	</modules>
 </project>
