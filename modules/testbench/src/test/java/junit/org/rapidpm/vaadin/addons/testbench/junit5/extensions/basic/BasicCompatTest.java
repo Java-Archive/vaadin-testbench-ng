@@ -1,9 +1,9 @@
 package junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic;
 
-import junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic.demo.BasicTestPageObject;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.rapidpm.vaadin.addons.testbench.junit5.extensions.compattest.VaadinWebCompatTest;
+import junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic.demo.BasicTestPageObject;
 
 /**
  *
