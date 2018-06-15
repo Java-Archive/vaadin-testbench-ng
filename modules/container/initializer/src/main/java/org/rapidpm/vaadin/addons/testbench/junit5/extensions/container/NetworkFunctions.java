@@ -6,6 +6,7 @@ import static org.rapidpm.frp.Transformations.not;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.ServerSocket;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.function.Supplier;
@@ -14,6 +15,14 @@ import org.rapidpm.frp.functions.CheckedPredicate;
 import org.rapidpm.frp.functions.CheckedSupplier;
 
 public interface NetworkFunctions {
+
+  static CheckedSupplier<Integer> freePort() {
+    return () -> {
+        try (ServerSocket socket = new ServerSocket(0)) {
+            return socket.getLocalPort();
+        }
+     };
+  }
 
   static Supplier<String> localeIP() {
     return () -> {
