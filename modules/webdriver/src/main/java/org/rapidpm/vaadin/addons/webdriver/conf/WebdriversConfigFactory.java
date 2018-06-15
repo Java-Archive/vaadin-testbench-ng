@@ -94,7 +94,9 @@ public class WebdriversConfigFactory implements HasLogger {
                                             .filter(key -> key.startsWith(COMPATTESTING_GRID))
                                             .map(key -> key.substring(COMPATTESTING_GRID.length() + 1))
                                             .map(key -> key.substring(0, key.indexOf('.'))).collect(toSet());
-
+    if(gridNames.isEmpty()) {
+      grids.add(createDefaultGrid());
+    }
     for (String gridName : gridNames) {
       if (isActive(configProperties, gridName)) {
         GridConfig.Type type = getGridType(configProperties, gridName);
@@ -116,8 +118,15 @@ public class WebdriversConfigFactory implements HasLogger {
         ));
       }
     }
-
     return grids;
+  }
+
+  private GridConfig createDefaultGrid() {
+    DesiredCapabilities desiredCapability = new DesiredCapabilities();
+    desiredCapability.setPlatform(Platform.ANY);
+    desiredCapability.setBrowserName(DEFAULT_UNITTESTING_BROWSER);
+    return new GridConfig(Type.GENERIC, "autoConfGrid",
+        "http://localhost:4444/wd/hub", Arrays.asList(desiredCapability));
   }
 
   private boolean isActive(Properties configProperties, String gridName) {

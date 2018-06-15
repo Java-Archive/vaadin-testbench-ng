@@ -27,7 +27,18 @@ public class WebdriversConfigTest {
     assertEquals(DesiredCapabilities.chrome(), config.getUnittestingBrowser());
     assertEquals(SELENIUM_GRID_PROPERTIES_LOCALE_BROWSER, config.getUnittestingTarget());
 
-    assertEquals(0, config.getGridConfigs().size());
+    assertEquals(1, config.getGridConfigs().size());
+
+    final GridConfig autoConfGridConfig = config.getGridConfigs().get(0);
+
+    assertEquals("autoConfGrid", autoConfGridConfig.getName());
+    assertEquals("http://localhost:4444/wd/hub", autoConfGridConfig.getTarget());
+    assertEquals(Type.GENERIC, autoConfGridConfig.getType());
+    assertEquals(1, autoConfGridConfig.getDesiredCapabilities().size());
+
+    assertEquals(Platform.ANY, autoConfGridConfig.getDesiredCapabilities().get(0).getPlatform());
+    assertEquals("", autoConfGridConfig.getDesiredCapabilities().get(0).getVersion());
+    assertEquals("chrome", autoConfGridConfig.getDesiredCapabilities().get(0).getBrowserName());
   }
 
   @Test
