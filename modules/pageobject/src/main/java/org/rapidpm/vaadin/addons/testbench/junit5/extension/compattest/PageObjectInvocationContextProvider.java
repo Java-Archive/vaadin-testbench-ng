@@ -1,20 +1,25 @@
 package org.rapidpm.vaadin.addons.testbench.junit5.extension.compattest;
 
-import org.junit.jupiter.api.extension.*;
+import static java.util.Collections.singletonList;
+import static org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions.webDriverInstances;
+import static org.rapidpm.vaadin.addons.webdriver.WebDriverFunctions.webdriverName;
+import static org.rapidpm.vaadin.addons.webdriver.junit5.WebdriverExtensionFunctions.storeWebDriver;
+import java.lang.reflect.Constructor;
+import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.junit.jupiter.api.extension.Extension;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.ParameterContext;
+import org.junit.jupiter.api.extension.ParameterResolutionException;
+import org.junit.jupiter.api.extension.ParameterResolver;
+import org.junit.jupiter.api.extension.TestTemplateInvocationContext;
+import org.junit.jupiter.api.extension.TestTemplateInvocationContextProvider;
 import org.openqa.selenium.WebDriver;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.frp.functions.CheckedFunction;
 import org.rapidpm.frp.model.Result;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.PageObject;
-
-import java.lang.reflect.Constructor;
-import java.util.List;
-import java.util.stream.Stream;
-
-import static java.util.Collections.singletonList;
-import static org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions.webDriverInstances;
-import static org.rapidpm.vaadin.addons.webdriver.WebDriverFunctions.webdriverName;
-import static org.rapidpm.vaadin.addons.webdriver.junit5.WebdriverExtensionFunctions.storeWebDriver;
 
 /**
  *
@@ -31,7 +36,6 @@ public class PageObjectInvocationContextProvider implements TestTemplateInvocati
     logger().info("provideTestTemplateInvocationContexts");
 
     return webDriverInstances()
-        .get()
         .stream()
         .map(this::invocationContext)
         .peek(po -> {
@@ -47,17 +51,22 @@ public class PageObjectInvocationContextProvider implements TestTemplateInvocati
   }
 
 
-  private MyTestTemplateInvocationContext invocationContext(WebDriver webdriver) {
+  private MyTestTemplateInvocationContext invocationContext(Supplier<WebDriver> webdriverSupplier) {
     return new MyTestTemplateInvocationContext() {
+
+      private WebDriver webDriver;
 
       @Override
       public WebDriver webdriver() {
-        return webdriver;
+        if (webDriver == null) {
+          webDriver = webdriverSupplier.get();
+        }
+        return webDriver;
       }
 
       @Override
       public String getDisplayName(int invocationIndex) {
-        return webdriverName().apply(webdriver);
+        return webdriverName().apply(webdriver());
       }
 
       @Override
@@ -80,12 +89,12 @@ public class PageObjectInvocationContextProvider implements TestTemplateInvocati
 
             final Result<PageObject> po = ((CheckedFunction<Class<?>, PageObject>) aClass -> {
               final Constructor<?> constructor = pageObjectClass.getConstructor(WebDriver.class);
-              return PageObject.class.cast(constructor.newInstance(webdriver));
+              return PageObject.class.cast(constructor.newInstance(webdriver()));
             })
                 .apply(pageObjectClass);
 
             po.ifPresentOrElse(
-                success -> logger().fine("pageobject of type " + pageObjectClass.getSimpleName() + " was created with " + webdriverName().apply(webdriver)),
+                success -> logger().fine("pageobject of type " + pageObjectClass.getSimpleName() + " was created with " + webdriverName().apply(webdriver())),
                 failed -> logger().warning("was not able to create PageObjectInstance " + failed)
             );
             po.ifAbsent(() -> {

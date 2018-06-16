@@ -1,8 +1,5 @@
 package org.rapidpm.vaadin.addons.webdriver;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 import static org.rapidpm.frp.matcher.Case.match;
 import static org.rapidpm.frp.matcher.Case.matchCase;
@@ -12,7 +9,6 @@ import static org.rapidpm.frp.model.Result.success;
 //import com.vaadin.testbench.TestBench;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -135,10 +131,10 @@ public interface BrowserDriverFunctions extends HasLogger {
   }
 
   //TODO List<WebDriver> -> List<Supplier<WebDriver>>
-  static Supplier<List<WebDriver>> webDriverInstances() {
-    return () -> {
+  static List<Supplier<WebDriver>> webDriverInstances() {
 
-      final Map<Boolean, List<Result<WebDriver>>> resultMap = readConfig()
+
+      return readConfig()
           .getGridConfigs()
           .stream()
           .flatMap(gridConfig -> gridConfig
@@ -149,24 +145,21 @@ public interface BrowserDriverFunctions extends HasLogger {
                                       gridConfig.getTarget()
               ))
           )
-          .map(t -> (t.getT1())
-                    ? localWebDriverInstance().apply(t.getT2())
-                    : remoteWebDriverInstance(t.getT2(), t.getT3()).get()
-          )
-          .peek(r -> r.ifFailed(failed -> Logger.getLogger(BrowserDriverFunctions.class).warning(failed)))
-          .collect(groupingBy(Result::isPresent));
+          .map(createSupplier()
+          ).collect(toList());
+    }
 
-      if (resultMap.containsKey(FALSE)) {
-        throw new RuntimeException(resultMap.get(FALSE).toString());
-      }
-      return resultMap
-          .get(TRUE)
-          .stream()
-          .map(Result::get)
-          .collect(toList());
-
-
+  static Function<? super Triple<Boolean, DesiredCapabilities, String>, ? extends Supplier<WebDriver>> createSupplier() {
+    return t -> {
+      return () -> triple2WebDriverResult(t).get();
     };
+  }
+
+  static Result<WebDriver> triple2WebDriverResult(Triple<Boolean, DesiredCapabilities, String> t) {
+    final Result<WebDriver> result = (t.getT1())
+              ? localWebDriverInstance().apply(t.getT2())
+              : remoteWebDriverInstance(t.getT2(), t.getT3()).get();
+    return result;
   }
 
   static WebdriversConfig readConfig() {
