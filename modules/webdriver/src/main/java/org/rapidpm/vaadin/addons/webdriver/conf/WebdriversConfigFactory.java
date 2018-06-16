@@ -94,7 +94,7 @@ public class WebdriversConfigFactory implements HasLogger {
                                             .filter(key -> key.startsWith(COMPATTESTING_GRID))
                                             .map(key -> key.substring(COMPATTESTING_GRID.length() + 1))
                                             .map(key -> key.substring(0, key.indexOf('.'))).collect(toSet());
-    if(gridNames.isEmpty()) {
+    if (gridNames.isEmpty()) {
       grids.add(createDefaultGrid());
     }
     for (String gridName : gridNames) {
