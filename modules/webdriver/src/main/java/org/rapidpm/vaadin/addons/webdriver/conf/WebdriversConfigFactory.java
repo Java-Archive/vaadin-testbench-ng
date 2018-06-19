@@ -1,5 +1,20 @@
 package org.rapidpm.vaadin.addons.webdriver.conf;
 
+import static java.util.Collections.unmodifiableList;
+import static java.util.stream.Collectors.toSet;
+import static org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions.SELENIUM_GRID_PROPERTIES_LOCALE_BROWSER;
+import static org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions.type2Capabilities;
+import static org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfig.CHROME_BINARY_PATH;
+import static org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfig.COMPATTESTING_GRID;
+import static org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfig.UNITTESTING_BROWSER;
+import static org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfig.UNITTESTING_HOST;
+import static org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfig.UNITTESTING_PORT;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.openqa.selenium.Platform;
@@ -8,14 +23,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions;
 import org.rapidpm.vaadin.addons.webdriver.conf.GridConfig.Type;
-
-import java.util.*;
-
-import static java.util.Collections.unmodifiableList;
-import static java.util.stream.Collectors.toSet;
-import static org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions.SELENIUM_GRID_PROPERTIES_LOCALE_BROWSER;
-import static org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions.type2Capabilities;
-import static org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfig.*;
 
 public class WebdriversConfigFactory implements HasLogger {
 
@@ -55,10 +62,12 @@ public class WebdriversConfigFactory implements HasLogger {
   private String getUnitTestingTarget(Properties configProperties) {
     final String host =
         configProperties.getProperty(UNITTESTING_HOST, SELENIUM_GRID_PROPERTIES_LOCALE_BROWSER);
+    final String port =
+        configProperties.getProperty(UNITTESTING_PORT, "4444");
     if (SELENIUM_GRID_PROPERTIES_LOCALE_BROWSER.equals(host)) {
       return host;
     } else {
-      return "http://" + host + ":4444/wd/hub";
+      return "http://" + host + ":" + port + "/wd/hub";
     }
   }
 
@@ -85,7 +94,9 @@ public class WebdriversConfigFactory implements HasLogger {
                                             .filter(key -> key.startsWith(COMPATTESTING_GRID))
                                             .map(key -> key.substring(COMPATTESTING_GRID.length() + 1))
                                             .map(key -> key.substring(0, key.indexOf('.'))).collect(toSet());
-
+    if (gridNames.isEmpty()) {
+      grids.add(createDefaultGrid());
+    }
     for (String gridName : gridNames) {
       if (isActive(configProperties, gridName)) {
         GridConfig.Type type = getGridType(configProperties, gridName);
@@ -107,8 +118,15 @@ public class WebdriversConfigFactory implements HasLogger {
         ));
       }
     }
-
     return grids;
+  }
+
+  private GridConfig createDefaultGrid() {
+    DesiredCapabilities desiredCapability = new DesiredCapabilities();
+    desiredCapability.setPlatform(Platform.ANY);
+    desiredCapability.setBrowserName(DEFAULT_UNITTESTING_BROWSER);
+    return new GridConfig(Type.GENERIC, "autoConfGrid",
+        "http://localhost:4444/wd/hub", Arrays.asList(desiredCapability));
   }
 
   private boolean isActive(Properties configProperties, String gridName) {
@@ -131,7 +149,12 @@ public class WebdriversConfigFactory implements HasLogger {
       for (String browser : browsers) {
         for (String version : getVersions(configProperties, gridName, browser)) {
           DesiredCapabilities desiredCapability =
-              new DesiredCapabilities(browser, version, Platform.fromString(os));
+              new DesiredCapabilities();
+          desiredCapability.setPlatform(Platform.fromString(os));
+          desiredCapability.setBrowserName(browser);
+          if (!"ANY".equals(version)) {
+            desiredCapability.setVersion(version);
+          }
           if (type == Type.SELENOID) {
             desiredCapability.setCapability(BrowserDriverFunctions.ENABLE_VIDEO,
                                             getBoolean(configProperties, gridName, BrowserDriverFunctions.ENABLE_VIDEO)
@@ -159,7 +182,9 @@ public class WebdriversConfigFactory implements HasLogger {
       }
     }
     //TODO if nothing was added, add default chrome one
-    if (desiredCapabilites.isEmpty()) desiredCapabilites.add(DesiredCapabilities.chrome());
+    if (desiredCapabilites.isEmpty()) {
+      desiredCapabilites.add(DesiredCapabilities.chrome());
+    }
     return desiredCapabilites;
   }
 
@@ -176,7 +201,9 @@ public class WebdriversConfigFactory implements HasLogger {
   private Set<String> getOses(Properties configProperties, String gridName) {
     String property = configProperties.getProperty(getGridNameKey(gridName) + ".os");
     return (property == null)
-           ? Collections.emptySet()
+           ? Arrays
+               .stream(new String[] {"ANY"})
+               .collect(toSet())
            : Arrays
                .stream(property.split(","))
                .map(String::trim)
@@ -184,11 +211,11 @@ public class WebdriversConfigFactory implements HasLogger {
   }
 
   private Set<String> getVersions(Properties configProperties, String gridName, String browser) {
-
-
     String property = configProperties.getProperty(getGridNameKey(gridName) + ".browser." + browser + ".version");
     return (property == null)
-           ? Collections.emptySet()
+           ? Arrays
+               .stream(new String[] {"ANY"})
+               .collect(toSet())
            : Arrays
                .stream(property.split(","))
                .map(String::trim)

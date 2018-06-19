@@ -1,6 +1,17 @@
 package org.rapidpm.vaadin.addons.webdriver;
 
-import com.github.webdriverextensions.DriverPathLoader;
+import static java.util.stream.Collectors.toList;
+import static org.rapidpm.frp.matcher.Case.match;
+import static org.rapidpm.frp.matcher.Case.matchCase;
+import static org.rapidpm.frp.memoizer.Memoizer.memoize;
+import static org.rapidpm.frp.model.Result.failure;
+import static org.rapidpm.frp.model.Result.success;
+//import com.vaadin.testbench.TestBench;
+import java.net.URL;
+import java.util.List;
+import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,24 +30,7 @@ import org.rapidpm.frp.model.Result;
 import org.rapidpm.frp.model.Triple;
 import org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfig;
 import org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfigFactory;
-
-import java.net.URL;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.toList;
-import static org.rapidpm.frp.matcher.Case.match;
-import static org.rapidpm.frp.matcher.Case.matchCase;
-import static org.rapidpm.frp.memoizer.Memoizer.memoize;
-import static org.rapidpm.frp.model.Result.failure;
-import static org.rapidpm.frp.model.Result.success;
-//import com.vaadin.testbench.TestBench;
+import com.github.webdriverextensions.DriverPathLoader;
 
 /**
  *
@@ -130,16 +124,17 @@ public interface BrowserDriverFunctions extends HasLogger {
   static CheckedSupplier<WebDriver> remoteWebDriverInstance(DesiredCapabilities desiredCapability,
                                                             final String ip) {
     return () -> {
+      Logger.getLogger(BrowserDriverFunctions.class).info("Create RemoteWebdriver to " + ip + " for browser: " + desiredCapability);
       final URL url = new URL(ip);
       return new RemoteWebDriver(url, desiredCapability);
     };
   }
 
   //TODO List<WebDriver> -> List<Supplier<WebDriver>>
-  static Supplier<List<WebDriver>> webDriverInstances() {
-    return () -> {
+  static List<Supplier<WebDriver>> webDriverInstances() {
 
-      final Map<Boolean, List<Result<WebDriver>>> resultMap = readConfig()
+
+      return readConfig()
           .getGridConfigs()
           .stream()
           .flatMap(gridConfig -> gridConfig
@@ -150,24 +145,21 @@ public interface BrowserDriverFunctions extends HasLogger {
                                       gridConfig.getTarget()
               ))
           )
-          .map(t -> (t.getT1())
-                    ? localWebDriverInstance().apply(t.getT2())
-                    : remoteWebDriverInstance(t.getT2(), t.getT3()).get()
-          )
-          .peek(r -> r.ifFailed(failed -> Logger.getLogger(BrowserDriverFunctions.class).warning(failed)))
-          .collect(groupingBy(Result::isPresent));
+          .map(createSupplier()
+          ).collect(toList());
+    }
 
-      if (resultMap.containsKey(FALSE)) {
-        throw new RuntimeException(resultMap.get(FALSE).toString());
-      }
-      return resultMap
-          .get(TRUE)
-          .stream()
-          .map(Result::get)
-          .collect(toList());
-
-
+  static Function<? super Triple<Boolean, DesiredCapabilities, String>, ? extends Supplier<WebDriver>> createSupplier() {
+    return t -> {
+      return () -> triple2WebDriverResult(t).get();
     };
+  }
+
+  static Result<WebDriver> triple2WebDriverResult(Triple<Boolean, DesiredCapabilities, String> t) {
+    final Result<WebDriver> result = (t.getT1())
+              ? localWebDriverInstance().apply(t.getT2())
+              : remoteWebDriverInstance(t.getT2(), t.getT3()).get();
+    return result;
   }
 
   static WebdriversConfig readConfig() {

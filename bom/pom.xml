@@ -24,7 +24,7 @@
     <rapidpm-microservice.version>1.0.3</rapidpm-microservice.version>
 
     <vaadin.version>8.3.1</vaadin.version>
-    <vaadin-testbench.version>5.1.1</vaadin-testbench.version>
+    <vaadin-testbench.version>5.1.2</vaadin-testbench.version>
 
     <selenium.version>3.12.0</selenium.version>
     <testcontainers.version>1.5.0</testcontainers.version>
@@ -106,7 +106,11 @@
         <artifactId>selenium-java</artifactId>
         <version>${selenium.version}</version>
       </dependency>
-
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-server</artifactId>
+        <version>${selenium.version}</version>
+      </dependency>
 
       <!--Project Modules-->
       <dependency>

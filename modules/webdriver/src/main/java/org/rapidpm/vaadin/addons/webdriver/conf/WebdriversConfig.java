@@ -1,15 +1,15 @@
 package org.rapidpm.vaadin.addons.webdriver.conf;
 
-import net.vergien.beanautoutils.annotation.Bean;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
 import java.util.List;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import net.vergien.beanautoutils.annotation.Bean;
 
 @Bean
 public class WebdriversConfig {
   public static final String              CHROME_BINARY_PATH  = "chrome.binary.path";
   public static final String              UNITTESTING_BROWSER = "unittesting.browser";
   public static final String              UNITTESTING_HOST    = "unittesting.target";
+  public static final String              UNITTESTING_PORT    = "unittesting.port";
   public static final String              COMPATTESTING       = "compattesting";
   public static final String              COMPATTESTING_GRID  = COMPATTESTING + ".grid";
   private final       String              unittestingTarget;

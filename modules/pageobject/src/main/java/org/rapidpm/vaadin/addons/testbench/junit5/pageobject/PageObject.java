@@ -1,14 +1,12 @@
 package org.rapidpm.vaadin.addons.testbench.junit5.pageobject;
 
+import static java.lang.System.getProperties;
+import static org.rapidpm.vaadin.addons.webdriver.WebDriverFunctions.takeScreenShot;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.frp.functions.CheckedExecutor;
 import org.rapidpm.vaadin.addons.webdriver.HasDriver;
-
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-
-import static java.lang.System.getProperties;
-import static org.rapidpm.vaadin.addons.webdriver.WebDriverFunctions.takeScreenShot;
 
 public interface PageObject extends HasDriver, HasLogger {
 
@@ -27,6 +25,7 @@ public interface PageObject extends HasDriver, HasLogger {
 
   default void loadPage() {
     final String url = url().get();
+    logger().info("Navigate browser to " + url);
     getDriver().get(url);
   }
 

@@ -1,4 +1,4 @@
-package junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic;
+package junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic.demo;
 
 
 import org.junit.jupiter.api.extension.AfterAllCallback;
@@ -7,12 +7,10 @@ import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.rapidpm.dependencies.core.logger.HasLogger;
-import org.rapidpm.microservice.MainUndertow;
-import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.PageObject;
 
-public class RapidPMExtension implements BeforeAllCallback, BeforeEachCallback,
-                                         AfterEachCallback, AfterAllCallback, HasLogger {
+public class PageObjectConfigExtension implements BeforeAllCallback, BeforeEachCallback,
+    AfterEachCallback, AfterAllCallback, HasLogger {
 
 
   @Override
@@ -33,9 +31,9 @@ public class RapidPMExtension implements BeforeAllCallback, BeforeEachCallback,
   @Override
   public void beforeEach(ExtensionContext context) throws Exception {
 
-    System.setProperty(PageObject.SERVER_WEBAPP, MainUndertow.MYAPP);
-    System.setProperty(PageObject.SERVER_IP, System.getProperty(MainUndertow.SERVLET_HOST_PROPERTY));
-    System.setProperty(PageObject.SERVER_PORT, System.getProperty(MainUndertow.SERVLET_PORT_PROPERTY));
+    System.setProperty(PageObject.SERVER_WEBAPP, "/" + DemoUI.class.getName());
+//    System.setProperty(PageObject.SERVER_PORT, "9998");
+//    System.setProperty(PageObject.SERVER_IP, NetworkFunctions.localeIP().get());
 
   }
 }

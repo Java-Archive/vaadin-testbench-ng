@@ -8,9 +8,6 @@ import org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions;
 
 public class BrowserDriverFunctionsTest {
 
-
-
-
   @Test
   @DisplayName("test reading properties")
   void test001() {
@@ -21,5 +18,4 @@ public class BrowserDriverFunctionsTest {
         || "selenoid.rapidpm.org".equals(properties.get("unittesting.target"));
     assertTrue(isLocaleOrRapidSelnoid);
   }
-
 }

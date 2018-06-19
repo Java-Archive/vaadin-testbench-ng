@@ -1,6 +1,6 @@
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
-import com.google.auto.service.AutoService;
+import java.lang.reflect.Method;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.microservice.Main;
@@ -38,10 +38,11 @@ public class RapidPMContainerInitializer implements ContainerInitializer, HasLog
 
   @Override
   public void afterAll(Class<?> testClass) throws Exception {
-    //nothing
+    // nothing
   }
 
   @Override
   public void beforeAll(Class<?> testClass) throws Exception {
+    // nothing
   }
 }

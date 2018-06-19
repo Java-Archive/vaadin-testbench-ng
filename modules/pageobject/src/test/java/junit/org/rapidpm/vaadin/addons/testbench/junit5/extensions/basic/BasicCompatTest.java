@@ -2,14 +2,15 @@ package junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic;
 
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.rapidpm.vaadin.addons.testbench.junit5.extensions.compattest.VaadinWebCompatTest;
+import org.rapidpm.vaadin.addons.testbench.junit5.extension.compattest.WebCompatTest;
 import junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic.demo.BasicTestPageObject;
+import junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic.demo.PageObjectConfigExtension;
 
 /**
  *
  */
-@VaadinWebCompatTest
-@ExtendWith(RapidPMExtension.class)
+@WebCompatTest
+@ExtendWith(PageObjectConfigExtension.class)
 class BasicCompatTest {
 
   @TestTemplate
