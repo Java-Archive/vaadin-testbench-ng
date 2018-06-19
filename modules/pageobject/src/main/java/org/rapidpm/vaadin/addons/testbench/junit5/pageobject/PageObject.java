@@ -6,21 +6,10 @@ import java.util.function.BiFunction;
 import java.util.function.Supplier;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.frp.functions.CheckedExecutor;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions;
 import org.rapidpm.vaadin.addons.webdriver.HasDriver;
 
 public interface PageObject extends HasDriver, HasLogger {
-
-
-  String DEFAULT_PROTOCOL = "http";
-  String DEFAULT_IP       = "127.0.0.1";
-
-  String DEFAULT_SERVLET_PORT   = "80";
-  String DEFAULT_SERVLET_WEBAPP = "/";
-
-  String SERVER_PROTOCOL = "server.protocol";
-  String SERVER_IP       = "server.ip";
-  String SERVER_PORT     = "server.port";
-  String SERVER_WEBAPP   = "server.webapp";
 
 
   default void loadPage() {
@@ -38,21 +27,21 @@ public interface PageObject extends HasDriver, HasLogger {
   }
 
   default Supplier<String> protocol() {
-    return () -> property().apply(SERVER_PROTOCOL, DEFAULT_PROTOCOL);
+    return () -> property().apply(NetworkFunctions.SERVER_PROTOCOL, NetworkFunctions.DEFAULT_PROTOCOL);
   }
 
   default Supplier<String> ip() {
-    return () -> property().apply(SERVER_IP, DEFAULT_IP);
+    return () -> property().apply(NetworkFunctions.SERVER_IP, NetworkFunctions.DEFAULT_IP);
   }
 
   default Supplier<String> port() {
     //TODO per properties
-    return () -> property().apply(SERVER_PORT, DEFAULT_SERVLET_PORT);
+    return () -> property().apply(NetworkFunctions.SERVER_PORT, NetworkFunctions.DEFAULT_SERVLET_PORT);
   }
 
   //TODO per properties
   default Supplier<String> webapp() {
-    return () -> property().apply(SERVER_WEBAPP, DEFAULT_SERVLET_WEBAPP);
+    return () -> property().apply(NetworkFunctions.SERVER_WEBAPP, NetworkFunctions.DEFAULT_SERVLET_WEBAPP);
   }
 
 

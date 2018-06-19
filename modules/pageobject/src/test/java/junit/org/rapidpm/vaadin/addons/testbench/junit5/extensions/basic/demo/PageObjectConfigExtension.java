@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.rapidpm.dependencies.core.logger.HasLogger;
-import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.PageObject;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions;
 
 public class PageObjectConfigExtension implements BeforeAllCallback, BeforeEachCallback,
     AfterEachCallback, AfterAllCallback, HasLogger {
@@ -31,7 +31,7 @@ public class PageObjectConfigExtension implements BeforeAllCallback, BeforeEachC
   @Override
   public void beforeEach(ExtensionContext context) throws Exception {
 
-    System.setProperty(PageObject.SERVER_WEBAPP, "/" + DemoUI.class.getName());
+    System.setProperty(NetworkFunctions.SERVER_WEBAPP, "/" + DemoUI.class.getName());
 //    System.setProperty(PageObject.SERVER_PORT, "9998");
 //    System.setProperty(PageObject.SERVER_IP, NetworkFunctions.localeIP().get());
 
