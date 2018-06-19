@@ -22,14 +22,15 @@ public class BrowserDriverFunctionsTest {
                                                   .apply(BrowserDriverFunctions.CONFIG_FOLDER + "config").get();
 
 
+    final String unittestingTarget = String.valueOf(properties.get("unittesting.target"));
     Case
         .match(
             matchCase(() -> failure("no matching unittesting.target..")),
-            matchCase(() -> "locale".equals(properties.get("unittesting.target")), () -> success(TRUE)),
-            matchCase(() -> "selenoid.rapidpm.org".equals(properties.get("unittesting.target")), () -> success(TRUE)),
-            matchCase(() -> "selenoid-server".equals(properties.get("unittesting.target")), () -> success(TRUE))
+            matchCase(() -> "locale".equals(unittestingTarget), () -> success(TRUE)),
+            matchCase(() -> "selenoid.rapidpm.org".equals(unittestingTarget), () -> success(TRUE)),
+            matchCase(() -> "selenoid-server".equals(unittestingTarget), () -> success(TRUE))
         )
-        .ifAbsent(fail("no expexted property value found for unittesting.target.. " + properties.get("unittesting.target")));
+        .ifAbsent(fail("no expected property value found for unittesting.target.. " + unittestingTarget));
 
   }
 }
