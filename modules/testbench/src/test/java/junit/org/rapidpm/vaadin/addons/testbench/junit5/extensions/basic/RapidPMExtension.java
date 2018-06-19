@@ -29,7 +29,8 @@ public class RapidPMExtension implements BeforeAllCallback, BeforeEachCallback,
   public void beforeEach(ExtensionContext context) throws Exception {
 
     System.setProperty(PageObject.SERVER_WEBAPP, MainUndertow.MYAPP);
-    System.setProperty(PageObject.SERVER_PORT, MainUndertow.DEFAULT_SERVLET_PORT+"");
+    System.setProperty(PageObject.SERVER_IP, System.getProperty(MainUndertow.SERVLET_HOST_PROPERTY));
+    System.setProperty(PageObject.SERVER_PORT, System.getProperty(MainUndertow.SERVLET_PORT_PROPERTY));
 
 
   }

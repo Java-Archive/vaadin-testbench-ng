@@ -8,7 +8,7 @@
   <parent>
     <groupId>org.rapidpm</groupId>
     <artifactId>rapidpm-dependencies</artifactId>
-    <version>3.5.10</version>
+    <version>3.6.1</version>
   </parent>
 
   <artifactId>rapidpm-vaadin-testbench-ng</artifactId>

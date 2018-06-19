@@ -23,6 +23,10 @@
 			<artifactId>rapidpm-microservice-modules-core</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.rapidpm.microservice</groupId>
+			<artifactId>rapidpm-microservice-modules-core-testutils</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.google.auto.service</groupId>
 			<artifactId>auto-service</artifactId>
 		</dependency>
