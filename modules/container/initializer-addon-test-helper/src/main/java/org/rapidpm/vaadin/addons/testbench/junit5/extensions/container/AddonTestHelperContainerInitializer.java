@@ -44,8 +44,6 @@ public class AddonTestHelperContainerInitializer implements ContainerInitializer
                                }
               );
         });
-
-
   }
 
   @Override
@@ -67,9 +65,7 @@ public class AddonTestHelperContainerInitializer implements ContainerInitializer
           return serverURI.toASCIIString();
         })
         .ifPresentOrElse(serverURI -> logger().info("Stopped server on : " + serverURI),
-                         failed -> logger().warning("no active server available to stop")
+                         failed -> logger().warning("no active server available to stop " + failed)
         );
-
-    ;
   }
 }
