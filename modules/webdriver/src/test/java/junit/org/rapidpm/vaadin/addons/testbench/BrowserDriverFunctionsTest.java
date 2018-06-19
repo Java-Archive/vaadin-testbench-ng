@@ -8,6 +8,7 @@ import org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions;
 import java.util.Properties;
 
 import static java.lang.Boolean.TRUE;
+import static java.lang.String.valueOf;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.rapidpm.frp.matcher.Case.matchCase;
 import static org.rapidpm.frp.model.Result.failure;
@@ -22,7 +23,7 @@ public class BrowserDriverFunctionsTest {
                                                   .apply(BrowserDriverFunctions.CONFIG_FOLDER + "config").get();
 
 
-    final String unittestingTarget = String.valueOf(properties.get("unittesting.target"));
+    final String unittestingTarget = valueOf(properties.get("unittesting.target")).trim();
     Case
         .match(
             matchCase(() -> failure("no matching unittesting.target..")),
