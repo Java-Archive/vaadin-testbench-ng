@@ -1,10 +1,17 @@
 package junit.org.rapidpm.vaadin.addons.testbench;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import java.util.Properties;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.rapidpm.frp.matcher.Case;
 import org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions;
+
+import java.util.Properties;
+
+import static java.lang.Boolean.TRUE;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.rapidpm.frp.matcher.Case.matchCase;
+import static org.rapidpm.frp.model.Result.failure;
+import static org.rapidpm.frp.model.Result.success;
 
 public class BrowserDriverFunctionsTest {
 
@@ -12,10 +19,17 @@ public class BrowserDriverFunctionsTest {
   @DisplayName("test reading properties")
   void test001() {
     Properties properties = BrowserDriverFunctions.propertyReader()
-        .apply(BrowserDriverFunctions.CONFIG_FOLDER + "config").get();
+                                                  .apply(BrowserDriverFunctions.CONFIG_FOLDER + "config").get();
 
-    boolean isLocaleOrRapidSelnoid = "locale".equals(properties.get("unittesting.target"))
-        || "selenoid.rapidpm.org".equals(properties.get("unittesting.target"));
-    assertTrue(isLocaleOrRapidSelnoid);
+
+    Case
+        .match(
+            matchCase(() -> failure("no matching unittesting.target..")),
+            matchCase(() -> "locale".equals(properties.get("unittesting.target")), () -> success(TRUE)),
+            matchCase(() -> "selenoid.rapidpm.org".equals(properties.get("unittesting.target")), () -> success(TRUE)),
+            matchCase(() -> "selenoid-server".equals(properties.get("unittesting.target")), () -> success(TRUE))
+        )
+        .ifAbsent(fail("no expexted property value found for unittesting.target.. " + properties.get("unittesting.target")));
+
   }
 }
