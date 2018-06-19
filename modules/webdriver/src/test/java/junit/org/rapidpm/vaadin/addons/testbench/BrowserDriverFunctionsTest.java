@@ -1,5 +1,6 @@
 package junit.org.rapidpm.vaadin.addons.testbench;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.rapidpm.dependencies.core.logger.HasLogger;
@@ -19,6 +20,7 @@ public class BrowserDriverFunctionsTest implements HasLogger {
 
   @Test
   @DisplayName("test reading properties")
+  @Disabled("test is not not generic enough")
   void test001() {
     Properties properties = BrowserDriverFunctions.propertyReader()
                                                   .apply(BrowserDriverFunctions.CONFIG_FOLDER + "config").get();
