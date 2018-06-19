@@ -1,6 +1,6 @@
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
-import java.lang.reflect.Method;
+import com.google.auto.service.AutoService;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.microservice.Main;
@@ -15,7 +15,7 @@ public class RapidPMContainerInitializer implements ContainerInitializer, HasLog
 
   @Override
   public void beforeEach(Method testMethod) throws Exception {
-    String localIP = localeIP().get();
+    String          localIP   = localeIP().get();
     final PortUtils portUtils = new PortUtils();
     System.setProperty(MainUndertow.REST_HOST_PROPERTY, localIP);
     System.setProperty(MainUndertow.SERVLET_HOST_PROPERTY, localIP);

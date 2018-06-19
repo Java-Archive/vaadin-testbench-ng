@@ -1,17 +1,6 @@
 package org.rapidpm.vaadin.addons.webdriver;
 
-import static java.util.stream.Collectors.toList;
-import static org.rapidpm.frp.matcher.Case.match;
-import static org.rapidpm.frp.matcher.Case.matchCase;
-import static org.rapidpm.frp.memoizer.Memoizer.memoize;
-import static org.rapidpm.frp.model.Result.failure;
-import static org.rapidpm.frp.model.Result.success;
-//import com.vaadin.testbench.TestBench;
-import java.net.URL;
-import java.util.List;
-import java.util.Properties;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.github.webdriverextensions.DriverPathLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -30,7 +19,21 @@ import org.rapidpm.frp.model.Result;
 import org.rapidpm.frp.model.Triple;
 import org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfig;
 import org.rapidpm.vaadin.addons.webdriver.conf.WebdriversConfigFactory;
-import com.github.webdriverextensions.DriverPathLoader;
+
+import java.net.URL;
+import java.util.List;
+import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+import static java.util.stream.Collectors.toList;
+import static org.rapidpm.frp.matcher.Case.match;
+import static org.rapidpm.frp.matcher.Case.matchCase;
+import static org.rapidpm.frp.memoizer.Memoizer.memoize;
+import static org.rapidpm.frp.model.Result.failure;
+import static org.rapidpm.frp.model.Result.success;
+
+//import com.vaadin.testbench.TestBench;
 
 /**
  *
@@ -134,32 +137,29 @@ public interface BrowserDriverFunctions extends HasLogger {
   static List<Supplier<WebDriver>> webDriverInstances() {
 
 
-      return readConfig()
-          .getGridConfigs()
-          .stream()
-          .flatMap(gridConfig -> gridConfig
-              .getDesiredCapabilities()
-              .stream()
-              .map(dc -> new Triple<>(gridConfig.getTarget().equals(SELENIUM_GRID_PROPERTIES_LOCALE_BROWSER),
-                                      dc,
-                                      gridConfig.getTarget()
-              ))
-          )
-          .map(createSupplier()
-          ).collect(toList());
-    }
+    return readConfig()
+        .getGridConfigs()
+        .stream()
+        .flatMap(gridConfig -> gridConfig
+            .getDesiredCapabilities()
+            .stream()
+            .map(dc -> new Triple<>(gridConfig.getTarget().equals(SELENIUM_GRID_PROPERTIES_LOCALE_BROWSER),
+                                    dc,
+                                    gridConfig.getTarget()
+            ))
+        )
+        .map(createSupplier())
+        .collect(toList());
+  }
 
   static Function<? super Triple<Boolean, DesiredCapabilities, String>, ? extends Supplier<WebDriver>> createSupplier() {
-    return t -> {
-      return () -> triple2WebDriverResult(t).get();
-    };
+    return t -> () -> triple2WebDriverResult(t).get();
   }
 
   static Result<WebDriver> triple2WebDriverResult(Triple<Boolean, DesiredCapabilities, String> t) {
-    final Result<WebDriver> result = (t.getT1())
-              ? localWebDriverInstance().apply(t.getT2())
-              : remoteWebDriverInstance(t.getT2(), t.getT3()).get();
-    return result;
+    return (t.getT1())
+           ? localWebDriverInstance().apply(t.getT2())
+           : remoteWebDriverInstance(t.getT2(), t.getT3()).get();
   }
 
   static WebdriversConfig readConfig() {
