@@ -2,12 +2,14 @@ package junit.org.rapidpm.vaadin.addons.testbench;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Properties;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions;
 
 public class BrowserDriverFunctionsTest {
 
+  @Disabled("depends on local settings")
   @Test
   @DisplayName("test reading properties")
   void test001() {
