@@ -163,7 +163,7 @@
     			<url>${env.MAVEN_REPO_URL}/libs-release-local</url>
   			</repository>
   			<snapshotRepository>
-  				<id>sys-nexus-ci-snaphsot</id>
+  				<id>sys-nexus-ci-snapshot</id>
     			<name>nexus-ci-snapshot</name>
     			<url>${env.MAVEN_REPO_URL}/libs-snapshot-local</url>
   			</snapshotRepository>
