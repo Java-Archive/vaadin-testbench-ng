@@ -158,12 +158,12 @@
   		<id>ci</id>
   		<distributionManagement>
   			<repository>
-    			<id>sys-nexus-ci</id>
+    			<id>sys-nexus-ci-release</id>
     			<name>nexus-ci-release</name>
     			<url>${env.MAVEN_REPO_URL}/libs-release-local</url>
   			</repository>
   			<snapshotRepository>
-  				<id>sys-nexus-ci</id>
+  				<id>sys-nexus-ci-snaphsot</id>
     			<name>nexus-ci-snapshot</name>
     			<url>${env.MAVEN_REPO_URL}/libs-snapshot-local</url>
   			</snapshotRepository>
