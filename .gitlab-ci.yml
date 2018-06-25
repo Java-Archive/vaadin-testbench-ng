@@ -30,5 +30,6 @@ deploy:jdk8:
   script:
     - './mvnw $MAVEN_CLI_OPTS deploy' 
   only:
-    - master, develop
+    - master
+    - develop
   image: openjdk:8-jdk
