@@ -1,0 +1,34 @@
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+
+cache:
+  paths:
+    - .m2/repository
+
+.verify: &verify
+  services:
+    - name: selenium/standalone-chrome
+      alias: chrome-host
+    - name: selenium/standalone-firefox
+      alias: firefox-host
+  stage: test
+  script:
+    - 'echo -n "$TB_LICENSE" > ~/.vaadin.testbench.developer.license'
+    - 'mkdir ~/.testbenchextensions'
+    - 'cp _data/configs/config-gitlab.properties ~/.testbenchextensions/config.properties'
+    - './mvnw $MAVEN_CLI_OPTS verify'
+  except:
+    - master
+
+verify:jdk8:
+  <<: *verify
+  image: openjdk:8-jdk
+  
+deploy:jdk8:
+  stage: deploy
+  script:
+    - './mvnw $MAVEN_CLI_OPTS deploy' 
+  only:
+    - master
+  image: openjdk:8-jdk
