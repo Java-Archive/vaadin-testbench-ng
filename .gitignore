@@ -1,6 +1,6 @@
 .idea/
 *.iml
-_data/webdrivers/
+**/_data/webdrivers/
 /modules/trainer/_data/webdrivers/
 /modules/trainer/ui/_data/webdrivers/
 
