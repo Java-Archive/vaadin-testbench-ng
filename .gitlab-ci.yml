@@ -14,7 +14,6 @@ cache:
       alias: firefox-host
   stage: test
   script:
-    - 'echo $MAVEN_REPO_USER - $MAVEN_REPO_PASS'
     - 'echo -n "$TB_LICENSE" > ~/.vaadin.testbench.developer.license'
     - 'mkdir ~/.testbenchextensions'
     - 'cp _data/configs/config-gitlab.properties ~/.testbenchextensions/config.properties'
