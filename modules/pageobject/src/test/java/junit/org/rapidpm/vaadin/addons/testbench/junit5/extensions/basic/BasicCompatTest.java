@@ -17,7 +17,11 @@ class BasicCompatTest {
 
   @TestTemplate
   void testTemplate(BasicTestPageObject pageObject) {
+    WaitUtil waitUtil = new WaitUtil(pageObject.getDriver());
+
     pageObject.loadPage();
+    waitUtil.waitForVaadin();
+
     assertThat(pageObject.getComponent().getSubComponents().size(), is(0));
     pageObject.screenshot();
   }
