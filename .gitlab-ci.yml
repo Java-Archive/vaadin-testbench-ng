@@ -28,10 +28,6 @@ verify:jdk8:
 verify:jdk10:
   <<: *verify
   image: openjdk:10-jdk
-  
-verify:jdk11:
-  <<: *verify
-  image: openjdk:11-jdk
     
 deploy:jdk8:
   stage: deploy
