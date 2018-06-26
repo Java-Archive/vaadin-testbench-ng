@@ -1,6 +1,7 @@
 .idea/
 *.iml
 **/_data/webdrivers/
+jacoco.exec
 /modules/trainer/_data/webdrivers/
 /modules/trainer/ui/_data/webdrivers/
 
