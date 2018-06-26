@@ -16,11 +16,13 @@ import org.junit.jupiter.api.extension.ParameterResolver;
 import org.junit.jupiter.api.extension.TestTemplateInvocationContext;
 import org.junit.jupiter.api.extension.TestTemplateInvocationContextProvider;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.frp.functions.CheckedFunction;
 import org.rapidpm.frp.memoizer.Memoizer;
 import org.rapidpm.frp.model.Result;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.PageObject;
+import xxx.com.github.webdriverextensions.WebDriverExtensionFieldDecorator;
 
 /**
  *
@@ -60,7 +62,7 @@ public class PageObjectInvocationContextProvider implements TestTemplateInvocati
         }
 
         @Override
-        public Object resolveParameter(ParameterContext parameterContext,
+        public PageObject resolveParameter(ParameterContext parameterContext,
                                        ExtensionContext extensionContext) {
 
           Class<?> pageObjectClass = parameterContext
@@ -69,7 +71,10 @@ public class PageObjectInvocationContextProvider implements TestTemplateInvocati
 
           final Result<PageObject> po = ((CheckedFunction<Class<?>, PageObject>) aClass -> {
             final Constructor<?> constructor = pageObjectClass.getConstructor(WebDriver.class);
-            return PageObject.class.cast(constructor.newInstance(webdriver()));
+            WebDriver webDriver = webdriver();
+            PageObject page = PageObject.class.cast(constructor.newInstance(webDriver));
+            PageFactory.initElements(new WebDriverExtensionFieldDecorator(webDriver), page);
+            return page;
           })
               .apply(pageObjectClass);
 
