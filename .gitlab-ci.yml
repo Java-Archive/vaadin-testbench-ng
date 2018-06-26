@@ -1,6 +1,6 @@
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
-  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true -P ci"
+  MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true -P ci"
 
 cache:
   paths:
@@ -28,7 +28,7 @@ verify:jdk8:
 deploy:jdk8:
   stage: deploy
   script:
-    - './mvnw $MAVEN_CLI_OPTS deploy' 
+    - './mvnw $MAVEN_CLI_OPTS deploy -DskipTests=true' 
   only:
     - master
     - develop
