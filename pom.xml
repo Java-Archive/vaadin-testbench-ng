@@ -72,11 +72,11 @@
       <url>http://maven.vaadin.com/vaadin-addons</url>
       <!--<url>http://maven.vaadin.com/</url>-->
     </repository>
-    <repository>
-      <id>vaadin-karibu</id>
-      <url>https://dl.bintray.com/mvysny/github</url>
-      <!--<url>http://maven.vaadin.com/</url>-->
-    </repository>
+    <!--<repository>-->
+      <!--<id>vaadin-karibu</id>-->
+      <!--<url>https://dl.bintray.com/mvysny/github</url>-->
+      <!--&lt;!&ndash;<url>http://maven.vaadin.com/</url>&ndash;&gt;-->
+    <!--</repository>-->
   </repositories>
 
   <dependencies>
