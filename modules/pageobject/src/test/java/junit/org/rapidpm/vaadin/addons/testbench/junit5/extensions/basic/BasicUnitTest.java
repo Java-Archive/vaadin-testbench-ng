@@ -1,5 +1,7 @@
 package junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.rapidpm.vaadin.addons.testbench.junit5.extension.unitest.WebUnitTest;
@@ -14,7 +16,9 @@ class BasicUnitTest {
   void test001(BasicTestPageObject pageObject) {
 
     pageObject.loadPage();
-    pageObject.button.get().click();
+    assertThat(pageObject.getComponent().getSubComponents().size(), is(0));
+    pageObject.getComponent().clickButton();
+    assertThat(pageObject.getComponent().getSubComponents().size(), is(1));
     pageObject.screenshot();
   }
 }
