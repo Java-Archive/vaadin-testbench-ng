@@ -20,6 +20,7 @@
     <module>webdriver</module>
     <module>pageobject</module>
     <module>testbench</module>
+    <module>vaadin-oss</module>
   </modules>
 
   <dependencyManagement>
