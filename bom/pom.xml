@@ -26,7 +26,7 @@
     <vaadin-v08.version>8.4.4</vaadin-v08.version>
     <vaadin-testbench-v05.version>5.1.2</vaadin-testbench-v05.version>
 
-    <vaadin-v10.version>10.0.0-rc5</vaadin-v10.version>
+    <vaadin-v10.version>10.0.1</vaadin-v10.version>
     <vaadin-testbench-v06.version>6.0.0</vaadin-testbench-v06.version>
 
     <selenium.version>3.12.0</selenium.version>
