@@ -23,8 +23,11 @@
     <rapidpm-functional-reactive.version>0.5.2</rapidpm-functional-reactive.version>
     <rapidpm-microservice.version>1.0.3</rapidpm-microservice.version>
 
-    <vaadin.version>8.3.1</vaadin.version>
-    <vaadin-testbench.version>5.1.2</vaadin-testbench.version>
+    <vaadin-v08.version>8.4.4</vaadin-v08.version>
+    <vaadin-testbench-v05.version>5.1.2</vaadin-testbench-v05.version>
+
+    <vaadin-v10.version>10.0.0-rc5</vaadin-v10.version>
+    <vaadin-testbench-v06.version>6.0.0</vaadin-testbench-v06.version>
 
     <selenium.version>3.12.0</selenium.version>
     <testcontainers.version>1.5.0</testcontainers.version>
@@ -32,22 +35,6 @@
 
   <dependencyManagement>
     <dependencies>
-      <!--Version definitions-->
-      <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-bom</artifactId>
-        <version>${vaadin.version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-
-      <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-testbench</artifactId>
-        <version>${vaadin-testbench.version}</version>
-        <!--<scope>test</scope>-->
-      </dependency>
-
       <dependency>
         <groupId>org.rapidpm.microservice</groupId>
         <artifactId>rapidpm-microservice-bom</artifactId>
@@ -74,6 +61,12 @@
         <version>2.0</version>
       </dependency>
 
+      <dependency>
+        <groupId>net.vergien.bau</groupId>
+        <artifactId>bean-auto-utils</artifactId>
+        <version>0.0.8</version>
+        <optional>true</optional>
+      </dependency>
       <!--API´s-->
       <dependency>
         <groupId>javax.servlet</groupId>
@@ -138,7 +131,7 @@
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-m-testbench</artifactId>
+        <artifactId>rapidpm-testbench-ng-m-testbench-v05</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
