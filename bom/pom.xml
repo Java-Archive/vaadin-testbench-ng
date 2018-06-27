@@ -128,9 +128,11 @@
         <artifactId>rapidpm-testbench-ng-m-pageobject</artifactId>
         <version>${project.version}</version>
       </dependency>
-
-
-
+       <dependency>
+        <groupId>org.rapidpm</groupId>
+        <artifactId>rapidpm-testbench-ng-pageobject-vaadin</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-testbench-ng-m-framework</artifactId>
@@ -138,7 +140,12 @@
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-m-testbench</artifactId>
+        <artifactId>rapidpm-testbench-ng-m-v8-testbench</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+       <dependency>
+        <groupId>org.rapidpm</groupId>
+        <artifactId>rapidpm-testbench-ng-m-v8-oss</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

@@ -19,8 +19,7 @@
     <module>container</module>
     <module>webdriver</module>
     <module>pageobject</module>
-    <module>testbench</module>
-    <module>vaadin-oss</module>
+    <module>pageobject-vaadin</module>
   </modules>
 
   <dependencyManagement>
