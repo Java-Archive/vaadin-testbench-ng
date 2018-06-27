@@ -30,10 +30,6 @@ public class PageObjectConfigExtension implements BeforeAllCallback, BeforeEachC
 
   @Override
   public void beforeEach(ExtensionContext context) throws Exception {
-
-    System.setProperty(NetworkFunctions.SERVER_WEBAPP, "/" + DemoUI.class.getName());
-//    System.setProperty(PageObject.SERVER_PORT, "9998");
-//    System.setProperty(PageObject.SERVER_IP, NetworkFunctions.localeIP().get());
-
+    System.setProperty(NetworkFunctions.SERVER_WEBAPP, DemoUI.class.getName());
   }
 }

@@ -50,7 +50,7 @@ public interface PageObject extends HasDriver, HasLogger {
   }
 
   default Supplier<String> url() {
-    return () -> baseURL().get() + webapp().get() + "/";
+    return () -> baseURL().get() + "/" + webapp().get() + "/";
   }
 
   default void destroy() {
