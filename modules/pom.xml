@@ -43,7 +43,7 @@
     <dependencies>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-vaadin-testbench-ng-bom</artifactId>
+        <artifactId>rapidpm-testbench-ng-bom</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>

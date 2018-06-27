@@ -20,13 +20,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>rapidpm-vaadin-testbench-ng-bom</artifactId>
+    <artifactId>rapidpm-testbench-ng-bom</artifactId>
     <groupId>org.rapidpm</groupId>
     <version>0.3.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>rapidpm-vaadin-testbench-ng-bom-vaadin-v10</artifactId>
+  <artifactId>rapidpm-testbench-ng-bom-vaadin-v10</artifactId>
 
   <properties>
     <vaadin.version>10.0.1</vaadin.version>

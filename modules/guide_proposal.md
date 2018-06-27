@@ -9,7 +9,7 @@ Grundsätzlich sind alle Grids aktiv, lediglich wenn explizit eine Auswahl von a
 # Getting started
 
   1. Testbench key installieren
-  1. TextbenchExtensions als Abhängikeit hinzufügen
+  1. TextbenchExtensions als Abhängigkeit hinzufügen
   1. PageObject erstellen
   1. Test mit @VaadinUnitTest schreiben
   1. mvn clean install

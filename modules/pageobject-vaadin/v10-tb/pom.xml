@@ -33,7 +33,7 @@
       <!--Version definitions from parent-->
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-vaadin-testbench-ng-bom-vaadin-v10</artifactId>
+        <artifactId>rapidpm-testbench-ng-bom-vaadin-v10</artifactId>
         <version>${project.version}</version>
         <scope>import</scope>
         <type>pom</type>
