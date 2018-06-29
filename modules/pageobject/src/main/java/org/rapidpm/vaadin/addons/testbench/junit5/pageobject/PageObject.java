@@ -1,12 +1,12 @@
 /**
  * Copyright © 2017 Sven Ruppert (sven.ruppert@gmail.com)
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,14 +15,19 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.pageobject;
 
-import static java.lang.System.getProperties;
-import static org.rapidpm.vaadin.addons.webdriver.WebDriverFunctions.takeScreenShot;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.frp.functions.CheckedExecutor;
 import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions;
 import org.rapidpm.vaadin.addons.webdriver.HasDriver;
+
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+
+import static java.lang.System.getProperties;
+import static org.rapidpm.frp.matcher.Case.match;
+import static org.rapidpm.frp.matcher.Case.matchCase;
+import static org.rapidpm.frp.model.Result.success;
+import static org.rapidpm.vaadin.addons.webdriver.WebDriverFunctions.takeScreenShot;
 
 public interface PageObject extends HasDriver, HasLogger {
 
@@ -65,7 +70,13 @@ public interface PageObject extends HasDriver, HasLogger {
   }
 
   default Supplier<String> url() {
-    return () -> baseURL().get() + "/" + webapp().get() + "/";
+    return () -> match(
+        matchCase(() -> success("/" + webapp().get() + "/")),
+        matchCase(() -> webapp().get().equals(""), () -> success("/")),
+        matchCase(() -> webapp().get().equals("/"), () -> success("/"))
+    )
+        .map(e -> baseURL().get() + e)
+        .get();
   }
 
   default void destroy() {
