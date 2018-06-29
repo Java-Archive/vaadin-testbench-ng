@@ -22,14 +22,6 @@ public class MeecrowaveContainerInitializer implements ContainerInitializer, Has
   @Override
   public void beforeEach(Method testMethod) throws Exception {
     String localIP = localeIP().get();
-
-
-//    final PortUtils portUtils = new PortUtils();
-//    setProperty(MainUndertow.REST_HOST_PROPERTY, localIP);
-//    setProperty(MainUndertow.SERVLET_HOST_PROPERTY, localIP);
-//    setProperty(MainUndertow.REST_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
-//    setProperty(MainUndertow.SERVLET_PORT_PROPERTY, portUtils.nextFreePortForTest() + "");
-
     meecrowave = new Meecrowave(new Meecrowave.Builder() {
       {
         randomHttpPort();
