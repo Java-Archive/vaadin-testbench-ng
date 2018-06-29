@@ -23,22 +23,24 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
 public class ButtonComponentDemo extends AbstractTest {
+  public static final String BUTTON_1 = "button-1";
+  public static final String BUTTON_2 = "button-2";
+  public static final String CLICK_COUNT = "click-count";
+
   private int clickcount = 0;
   private Label clickCountLabel;
 
   @Override
   public Component getTestComponent() {
 
-    Button button1 = new Button("Button 1", event -> {
-      this.inc(event);
-    });
-    button1.setId("button-1");
+    Button button1 = new Button("Button 1", this::inc);
+    button1.setId(BUTTON_1);
 
     Button button2 = new Button("Button 2", VaadinIcons.AIRPLANE);
-    button2.setId("button-2");
+    button2.setId(BUTTON_2);
     button2.setEnabled(false);
     clickCountLabel = new Label("0");
-    clickCountLabel.setId("click-count");
+    clickCountLabel.setId(CLICK_COUNT);
     return new VerticalLayout(button1, button2, clickCountLabel);
   }
 

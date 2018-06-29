@@ -21,22 +21,26 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.VaadinPageObject;
 
-public class ButtonComponentDemoPage extends VaadinPageObject {
+import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui.ButtonComponentDemo.BUTTON_1;
+import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui.ButtonComponentDemo.BUTTON_2;
+import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui.ButtonComponentDemo.CLICK_COUNT;
 
-  @FindBy(id = "button-1")
+public class ButtonComponentDemoPageObject extends VaadinPageObject {
+
+  @FindBy(id = BUTTON_1)
   private ButtonComponent button1;
-  @FindBy(id = "button-2")
+  @FindBy(id = BUTTON_2)
   private ButtonComponent button2;
-  @FindBy(id = "click-count")
+  @FindBy(id = CLICK_COUNT)
   private WebElement clickCount;
 
-  public ButtonComponentDemoPage(WebDriver webdriver) {
+  public ButtonComponentDemoPageObject(WebDriver webdriver) {
     super(webdriver);
   }
 
   @Override
   public Supplier<String> webapp() {
-    return () -> ButtonComponentDemo.class.getName();
+    return ButtonComponentDemo.class::getName;
   }
 
   public ButtonComponent getButton1() {
