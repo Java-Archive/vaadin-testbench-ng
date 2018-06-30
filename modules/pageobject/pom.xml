@@ -30,7 +30,7 @@
 
   <dependencyManagement>
     <dependencies>
-      <!--Version definitions from parent-->
+      <!--Versions for the testing part -->
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-testbench-ng-bom-vaadin-v08</artifactId>
@@ -66,11 +66,7 @@
       <artifactId>selenium-java</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-testbench-ng-m-container-init-addon-tserver</artifactId>
-      <scope>test</scope>
-    </dependency>
+
 
     <!--Core Vaadin Stuff-->
     <dependency>
@@ -81,6 +77,11 @@
 
 
     <!--What should be the Vaadin Version? -->
+    <dependency>
+      <groupId>org.rapidpm</groupId>
+      <artifactId>rapidpm-testbench-ng-m-container-init-addon-tserver</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-server</artifactId>
@@ -94,6 +95,11 @@
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-client-compiled</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.vaadin</groupId>
+      <artifactId>addon-test-helpers</artifactId>
       <scope>test</scope>
     </dependency>
 
@@ -128,12 +134,12 @@
                 <driver>
                   <name>chromedriver</name>
                 </driver>
-                <driver>
-                  <name>operadriver</name>
-                </driver>
-                <driver>
-                  <name>geckodriver</name>
-                </driver>
+                <!--<driver>-->
+                  <!--<name>operadriver</name>-->
+                <!--</driver>-->
+                <!--<driver>-->
+                  <!--<name>geckodriver</name>-->
+                <!--</driver>-->
               </drivers>
             </configuration>
           </plugin>

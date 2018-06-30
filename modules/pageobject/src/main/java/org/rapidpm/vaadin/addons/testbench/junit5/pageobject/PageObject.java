@@ -73,6 +73,9 @@ public interface PageObject extends HasDriver, HasLogger {
     return () -> match(
         matchCase(() -> success("/" + webapp().get() + "/")),
         matchCase(() -> webapp().get().equals(""), () -> success("/")),
+        matchCase(() -> webapp().get().endsWith("/") && webapp().get().startsWith("/"), () -> success(webapp().get())),
+        matchCase(() -> webapp().get().endsWith("/") && !webapp().get().startsWith("/"), () -> success("/" + webapp().get())),
+//        matchCase(() -> !webapp().get().endsWith("/") && webapp().get().startsWith("/"), () -> success(webapp().get() + "/")),
         matchCase(() -> webapp().get().equals("/"), () -> success("/"))
     )
         .map(e -> baseURL().get() + e)
