@@ -27,7 +27,8 @@ public abstract class AbstractVaadinWebComponent extends WebComponent {
     super.click();
   }
 
-  public abstract String getCaption();
+  //not every component will have this
+//  public abstract String getCaption();
 
   public void waitForVaadin() {
     VaadinConditions.waitForVaadin(TIMEOUT_IN_SECONDS, getWrappedDriver());
