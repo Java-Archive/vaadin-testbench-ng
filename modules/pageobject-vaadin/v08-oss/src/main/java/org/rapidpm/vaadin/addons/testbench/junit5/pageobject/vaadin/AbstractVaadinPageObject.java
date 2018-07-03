@@ -1,12 +1,12 @@
 /**
  * Copyright © 2017 Sven Ruppert (sven.ruppert@gmail.com)
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,16 +17,21 @@ package org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin;
 
 import org.openqa.selenium.WebDriver;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.AbstractPageObject;
+import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.GenericVaadinAppSpecific;
 
-public abstract class VaadinPageObject extends AbstractPageObject {
+import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.VaadinConditions.waitForVaadin;
 
-  public VaadinPageObject(WebDriver webdriver) {
+public abstract class AbstractVaadinPageObject
+    extends AbstractPageObject
+    implements GenericVaadinAppSpecific {
+
+  public AbstractVaadinPageObject(WebDriver webdriver) {
     super(webdriver);
   }
 
   @Override
   public void loadPage() {
     super.loadPage();
-    VaadinConditions.waitForVaadin(10, getDriver());
+    waitForVaadin(10, getDriver());
   }
 }

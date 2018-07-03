@@ -55,6 +55,7 @@
       <groupId>org.rapidpm</groupId>
       <artifactId>rapidpm-testbench-ng-pageobject-vaadin-generic</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.rapidpm</groupId>
       <artifactId>rapidpm-testbench-ng-m-framework-v08</artifactId>
@@ -96,11 +97,6 @@
     <dependency>
       <groupId>org.rapidpm</groupId>
       <artifactId>rapidpm-testbench-ng-m-container-init-rapidpm</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-testbench-ng-m-framework-v08</artifactId>
       <scope>test</scope>
     </dependency>
 

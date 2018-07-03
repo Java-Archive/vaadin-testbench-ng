@@ -68,10 +68,10 @@
       <groupId>org.rapidpm</groupId>
       <artifactId>rapidpm-testbench-ng-m-webdriver</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-testbench-ng-m-pageobject</artifactId>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.rapidpm</groupId>-->
+      <!--<artifactId>rapidpm-testbench-ng-m-pageobject</artifactId>-->
+    <!--</dependency>-->
 
     <dependency>
       <groupId>org.rapidpm</groupId>

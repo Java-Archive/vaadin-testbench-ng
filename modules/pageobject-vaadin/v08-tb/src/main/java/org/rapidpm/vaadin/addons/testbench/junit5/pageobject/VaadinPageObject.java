@@ -1,12 +1,12 @@
 /**
  * Copyright © 2017 Sven Ruppert (sven.ruppert@gmail.com)
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,30 +15,10 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.pageobject;
 
-import java.util.function.Supplier;
-
 /**
- *
+ * place to define V8 specific
  */
-public interface VaadinPageObject extends PageObject {
+public interface VaadinPageObject extends GenericVaadinAppSpecific {
 
-  default Supplier<String> urlRestartApp() {
-    return () -> url().get() + "?restartApplication";
-  }
 
-  default Supplier<String> urlDebugApp() {
-    return () -> url().get() + "?debug";
-  }
-
-  default Supplier<String> urlSwitchToDebugApp() {
-    return () -> url().get() + "?debug&restartApplication";
-  }
-
-  default void switchToDebugMode() {
-    getDriver().get(urlSwitchToDebugApp().get());
-  }
-
-  default void restartApplication() {
-    getDriver().get(urlRestartApp().get());
-  }
 }

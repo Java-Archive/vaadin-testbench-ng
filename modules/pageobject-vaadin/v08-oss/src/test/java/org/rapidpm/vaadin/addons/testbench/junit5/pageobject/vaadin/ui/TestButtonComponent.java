@@ -30,7 +30,7 @@ class TestButtonComponent {
   void setUp() throws Exception {}
 
   @Test
-  void test001(ButtonComponentDemoPageObject page) {
+  void test001(ButtonComponentDemoPageObjectAbstract page) {
     page.loadPage();
 
     assertThat(page.getButton1().getCaption(), is("Button 1"));
@@ -38,7 +38,7 @@ class TestButtonComponent {
   }
 
   @Test
-  void test002(ButtonComponentDemoPageObject page) {
+  void test002(ButtonComponentDemoPageObjectAbstract page) {
     page.loadPage();
 
     assertThat(page.getButton1().getIcon(), is(nullValue()));
@@ -46,7 +46,7 @@ class TestButtonComponent {
   }
 
   @Test
-  void test003(ButtonComponentDemoPageObject page) {
+  void test003(ButtonComponentDemoPageObjectAbstract page) {
     page.loadPage();
 
     assertThat(page.getButton1().isEnabled(), is(true));
@@ -54,7 +54,7 @@ class TestButtonComponent {
   }
 
   @Test
-  void test004(ButtonComponentDemoPageObject page) {
+  void test004(ButtonComponentDemoPageObjectAbstract page) {
     page.loadPage();
     assertThat(page.getClickCount(), is(0));
     page.getButton1().click();
