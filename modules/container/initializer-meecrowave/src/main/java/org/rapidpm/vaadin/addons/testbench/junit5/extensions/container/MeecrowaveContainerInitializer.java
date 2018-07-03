@@ -21,12 +21,10 @@ public class MeecrowaveContainerInitializer implements ContainerInitializer, Has
 
   @Override
   public void beforeEach(Method testMethod) throws Exception {
-    String localIP = localeIP().get();
     meecrowave = new Meecrowave(new Meecrowave.Builder() {
       {
         randomHttpPort();
-        setHost(localIP);
-//        setHttpPort(8080);
+        setHost(localeIP().get());
         setTomcatScanning(true);
         setTomcatAutoSetup(false);
         setHttp2(true);
@@ -35,7 +33,7 @@ public class MeecrowaveContainerInitializer implements ContainerInitializer, Has
 
     //mapping to TB Vars
     setProperty(NetworkFunctions.SERVER_WEBAPP, "/");
-    setProperty(NetworkFunctions.SERVER_IP, localIP);
+    setProperty(NetworkFunctions.SERVER_IP, meecrowave.getConfiguration().getHost());
     setProperty(NetworkFunctions.SERVER_PORT, String.valueOf(meecrowave.getConfiguration().getHttpPort()));
   }
 

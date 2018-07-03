@@ -27,9 +27,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>rapidpm-testbench-ng-m-container-init-meecrowave</artifactId>
-  <properties>
-    <meecrowave.version>1.2.1</meecrowave.version>
-  </properties>
+
 
   <dependencies>
     <dependency>

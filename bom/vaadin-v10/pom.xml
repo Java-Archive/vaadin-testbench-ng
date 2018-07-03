@@ -30,7 +30,7 @@
 
   <properties>
     <vaadin.version>10.0.1</vaadin.version>
-    <vaadin-testbench.version>6.0.0</vaadin-testbench.version>
+    <!--<vaadin-testbench.version>6.0.0</vaadin-testbench.version>-->
   </properties>
 
   <dependencyManagement>
@@ -40,16 +40,16 @@
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-bom</artifactId>
         <version>${vaadin.version}</version>
-        <scope>import</scope>
         <type>pom</type>
+        <scope>import</scope>
       </dependency>
 
-      <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-testbench</artifactId>
-        <version>${vaadin-testbench.version}</version>
-        <!--<scope>test</scope>-->
-      </dependency>
+      <!--<dependency>-->
+        <!--<groupId>com.vaadin</groupId>-->
+        <!--<artifactId>vaadin-testbench-core</artifactId>-->
+        <!--<version>${vaadin-testbench.version}</version>-->
+        <!--&lt;!&ndash;<scope>test</scope>&ndash;&gt;-->
+      <!--</dependency>-->
 
     </dependencies>
   </dependencyManagement>

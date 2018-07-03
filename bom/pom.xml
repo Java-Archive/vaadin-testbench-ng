@@ -35,18 +35,33 @@
 
 
   <properties>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>10</maven.compiler.target>
+    <maven.compiler.source>10</maven.compiler.source>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
 
-    <testcontainers.version>1.5.0</testcontainers.version>
-    <selenium.version>3.12.0</selenium.version>
+    <testcontainers.version>1.8.0</testcontainers.version>
+    <selenium.version>3.13.0</selenium.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>org.rapidpm.microservice</groupId>
+        <artifactId>rapidpm-microservice-modules-core</artifactId>
+        <scope>test</scope>
+        <version>${rapidpm-microservice.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.rapidpm.microservice</groupId>
+        <artifactId>rapidpm-microservice-modules-core-testutils</artifactId>
+        <scope>test</scope>
+        <version>${rapidpm-microservice.version}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.rapidpm</groupId>
@@ -110,6 +125,7 @@
         <artifactId>rapidpm-testbench-ng-m-junit5</artifactId>
         <version>${project.version}</version>
       </dependency>
+
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-testbench-ng-m-webdriver</artifactId>
@@ -122,7 +138,17 @@
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-m-framework</artifactId>
+        <artifactId>rapidpm-testbench-ng-pageobject-vaadin-generic</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.rapidpm</groupId>
+        <artifactId>rapidpm-testbench-ng-m-framework-v08</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.rapidpm</groupId>
+        <artifactId>rapidpm-testbench-ng-m-framework-v10</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

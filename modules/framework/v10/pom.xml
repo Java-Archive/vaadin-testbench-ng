@@ -43,7 +43,10 @@
   </dependencyManagement>
 
   <dependencies>
-
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin</artifactId>
+    </dependency>
   </dependencies>
 
 </project>

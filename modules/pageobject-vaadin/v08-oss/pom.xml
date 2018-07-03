@@ -28,7 +28,7 @@
 
   <dependencyManagement>
     <dependencies>
-      <!--Version definitions from parent-->
+      <!--for the testing-->
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-testbench-ng-bom-vaadin-v08</artifactId>
@@ -43,7 +43,7 @@
   <dependencies>
     <dependency>
       <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-testbench-ng-m-pageobject</artifactId>
+      <artifactId>rapidpm-testbench-ng-pageobject-vaadin-generic</artifactId>
     </dependency>
     <dependency>
       <groupId>org.rapidpm</groupId>
@@ -52,11 +52,6 @@
     </dependency>
 
     <!--Core Vaadin Stuff -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-server</artifactId>
@@ -72,47 +67,11 @@
       <artifactId>vaadin-client-compiled</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.vaadin</groupId>
+      <artifactId>addon-test-helpers</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
-  <profiles>
-    <profile>
-      <id>-vaadin-addon-testbench-webdrivers</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>com.github.webdriverextensions</groupId>
-            <artifactId>webdriverextensions-maven-plugin</artifactId>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>install-drivers</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <keepDownloadedWebdrivers>true</keepDownloadedWebdrivers>
-              <!--Distributed FS -->
-              <!--<installationDirectory>/Users/andidev/drivers</installationDirectory> -->
-              <installationDirectory>_data/webdrivers</installationDirectory>
-              <drivers>
-                <driver>
-                  <name>chromedriver</name>
-                </driver>
-                <driver>
-                  <name>operadriver</name>
-                </driver>
-                <driver>
-                  <name>geckodriver</name>
-                </driver>
-              </drivers>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 
 </project>
