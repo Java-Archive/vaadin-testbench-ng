@@ -141,16 +141,7 @@
         <artifactId>rapidpm-testbench-ng-pageobject-vaadin-generic</artifactId>
         <version>${project.version}</version>
       </dependency>
-      <dependency>
-        <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-m-framework-v08</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-m-framework-v10</artifactId>
-        <version>${project.version}</version>
-      </dependency>
+
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-testbench-ng-m-container-init</artifactId>
@@ -181,10 +172,6 @@
         <artifactId>rapidpm-testbench-ng-m-container-init-spring-boot</artifactId>
         <version>${project.version}</version>
       </dependency>
-
-
-
-
 
     </dependencies>
   </dependencyManagement>

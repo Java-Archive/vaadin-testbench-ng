@@ -46,6 +46,11 @@
 
       <dependency>
         <groupId>org.rapidpm</groupId>
+        <artifactId>rapidpm-testbench-ng-m-framework-v10</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-testbench-ng-pageobject-vaadin-v10-oss</artifactId>
         <version>${project.version}</version>
       </dependency>

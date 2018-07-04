@@ -17,7 +17,6 @@ package junit.org.rapidpm.vaadin.addons.testbench.junit5.extensions.basic.demo;
 
 import com.vaadin.flow.component.button.testbench.ButtonElement;
 import org.openqa.selenium.WebDriver;
-import org.rapidpm.BasicTestUI;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.AbstractVaadinPageObject;
 
 import java.util.function.Supplier;
