@@ -26,12 +26,13 @@
   <artifactId>testbench-ng-m-container</artifactId>
   <packaging>pom</packaging>
   <modules>
-    <module>nano</module>
     <module>initializer</module>
-    <module>initializer-addon-test-helper</module>
-    <module>initializer-rapidpm</module>
-    <module>initializer-spring-boot</module>
-    <module>initializer-none</module>
-    <module>initializer-meecrowave</module>
+    <module>init-addon-test-helper</module>
+    <module>init-rapidpm</module>
+    <module>init-spring-boot-v01</module>
+    <module>init-none</module>
+    <module>init-meecrowave</module>
+    <module>init-nano-undertow-v08</module>
+    <module>init-nano-undertow-v10</module>
   </modules>
 </project>

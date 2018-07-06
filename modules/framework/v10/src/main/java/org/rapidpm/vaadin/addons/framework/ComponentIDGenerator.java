@@ -20,6 +20,7 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
@@ -71,6 +72,10 @@ public interface ComponentIDGenerator {
     return (uiClass, label) -> genericID().apply(uiClass, Label.class, label);
   }
 
+  static BiFunction<Class, String, String> spanID() {
+    return (uiClass, label) -> genericID().apply(uiClass, Span.class, label);
+  }
+
   static BiFunction<Class, String, String> textfieldID() {
     return (uiClass, label) -> genericID().apply(uiClass, TextField.class, label);
   }
@@ -78,7 +83,6 @@ public interface ComponentIDGenerator {
   static BiFunction<Class, String, String> passwordID() {
     return (uiClass, label) -> genericID().apply(uiClass, PasswordField.class, label);
   }
-
 
 //  Layouts
 

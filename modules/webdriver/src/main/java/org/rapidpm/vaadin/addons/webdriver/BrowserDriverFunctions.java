@@ -18,6 +18,7 @@ package org.rapidpm.vaadin.addons.webdriver;
 import com.github.webdriverextensions.DriverPathLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -94,11 +95,11 @@ public interface BrowserDriverFunctions extends HasLogger {
       final String browserType = dc.getBrowserName();
       DriverPathLoader.loadDriverPaths();
       return match(
-          matchCase(() -> success(new ChromeDriver(dc))),
+          matchCase(() -> success(new ChromeDriver(new ChromeOptions().merge(dc)))),
           matchCase(browserType::isEmpty, () -> failure("browserType should not be empty")),
 //          matchCase(() -> browserType.equals(BrowserType.PHANTOMJS), () -> success(new PhantomJSDriver())),
           matchCase(() -> browserType.equals(BrowserType.FIREFOX), () -> success(new FirefoxDriver())),
-          matchCase(() -> browserType.equals(BrowserType.CHROME), () -> success(new ChromeDriver(dc))),
+          matchCase(() -> browserType.equals(BrowserType.CHROME), () -> success(new ChromeDriver(new ChromeOptions().merge(dc)))),
           matchCase(() -> browserType.equals(BrowserType.SAFARI), () -> success(new SafariDriver())),
           matchCase(() -> browserType.equals(BrowserType.OPERA), () -> success(new OperaDriver())),
           matchCase(() -> browserType.equals(BrowserType.OPERA_BLINK), () -> success(new OperaDriver())),

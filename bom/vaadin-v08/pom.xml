@@ -20,20 +20,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>rapidpm-testbench-ng-bom</artifactId>
+    <artifactId>testbench-ng-bom</artifactId>
     <groupId>org.rapidpm</groupId>
     <version>0.3.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>rapidpm-testbench-ng-bom-vaadin-v08</artifactId>
+  <artifactId>testbench-ng-bom-vaadin-v08</artifactId>
   <packaging>pom</packaging>
-
-  <properties>
-    <vaadin.version>8.4.4</vaadin.version>
-    <vaadin-testbench.version>5.1.2</vaadin-testbench.version>
-  </properties>
-
 
 
   <dependencyManagement>
@@ -41,17 +35,23 @@
       <!--Project internal-->
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-m-framework-v08</artifactId>
+        <artifactId>testbench-ng-m-container-init-nano-undertow-v08</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.rapidpm</groupId>
+        <artifactId>testbench-ng-m-framework-v08</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-pageobject-vaadin-v08-oss</artifactId>
+        <artifactId>testbench-ng-m-pageobject-vaadin-v08-oss</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-pageobject-vaadin-v08-tb</artifactId>
+        <artifactId>testbench-ng-m-pageobject-vaadin-v08-tb</artifactId>
         <version>${project.version}</version>
       </dependency>
 
@@ -67,7 +67,7 @@
       <dependency>
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-bom</artifactId>
-        <version>${vaadin.version}</version>
+        <version>${vaadin-v08.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -75,7 +75,25 @@
       <dependency>
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-testbench</artifactId>
-        <version>${vaadin-testbench.version}</version>
+        <version>${vaadin-testbench-v08.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+          </exclusion>
+        </exclusions>
+        <!--<scope>test</scope>-->
+      </dependency>
+      <dependency>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-testbench-core</artifactId>
+        <version>${vaadin-testbench-v08.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+          </exclusion>
+        </exclusions>
         <!--<scope>test</scope>-->
       </dependency>
 
@@ -90,6 +108,13 @@
         <artifactId>addon-test-helpers</artifactId>
         <version>2.1</version>
         <scope>test</scope>
+      </dependency>
+
+      <!--Runtimes-->
+      <dependency>
+        <groupId>org.rapidpm.vaadin</groupId>
+        <artifactId>nano-vaadin-v08</artifactId>
+        <version>0.2.0-SNAPSHOT</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

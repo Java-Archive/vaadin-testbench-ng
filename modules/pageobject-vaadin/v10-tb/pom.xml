@@ -20,32 +20,31 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>rapidpm-testbench-ng-pageobject-vaadin</artifactId>
+    <artifactId>testbench-ng-m-pageobject-vaadin</artifactId>
     <groupId>org.rapidpm</groupId>
     <version>0.3.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>rapidpm-testbench-ng-pageobject-vaadin-v10-tb</artifactId>
+  <artifactId>testbench-ng-m-pageobject-vaadin-v10-tb</artifactId>
 
   <dependencyManagement>
     <dependencies>
       <!--Version definitions from parent-->
       <dependency>
+        <groupId>com.vaadin</groupId>
+        <artifactId>vaadin-bom</artifactId>
+        <version>${vaadin-v10.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-bom-vaadin-v10</artifactId>
+        <artifactId>testbench-ng-bom-vaadin-v10</artifactId>
         <version>${project.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
-
-      <!--<dependency>-->
-      <!--<groupId>org.rapidpm.microservice</groupId>-->
-      <!--<artifactId>rapidpm-microservice-bom</artifactId>-->
-      <!--<version>${rapidpm-microservice.version}</version>-->
-      <!--<scope>import</scope>-->
-      <!--<type>pom</type>-->
-      <!--</dependency>-->
     </dependencies>
   </dependencyManagement>
 
@@ -53,31 +52,17 @@
   <dependencies>
     <dependency>
       <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-testbench-ng-m-framework-v10</artifactId>
-      <scope>compile</scope>
+      <artifactId>testbench-ng-m-framework-v10</artifactId>
     </dependency>
 
     <dependency>
       <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-testbench-ng-pageobject-vaadin-generic</artifactId>
+      <artifactId>testbench-ng-m-pageobject-vaadin-generic</artifactId>
     </dependency>
 
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin-core</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-lumo-theme</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>flow-push</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>flow-server</artifactId>
     </dependency>
 
     <dependency>
@@ -100,33 +85,5 @@
       <artifactId>vaadin-components-testbench</artifactId>
       <scope>compile</scope>
     </dependency>
-
-
-
-    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-servlet -->
-    <dependency>
-      <groupId>org.eclipse.jetty.websocket</groupId>
-      <artifactId>websocket-servlet</artifactId>
-      <version>9.4.11.v20180605</version>
-      <scope>test</scope>
-    </dependency>
-
-
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-testbench-ng-m-container-init-meecrowave</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!--<dependency>-->
-    <!--<groupId>org.rapidpm</groupId>-->
-    <!--<artifactId>rapidpm-testbench-ng-m-container-init-rapidpm</artifactId>-->
-    <!--<scope>test</scope>-->
-    <!--</dependency>-->
-    <!--Testcontainers-->
-    <dependency>
-      <groupId>org.testcontainers</groupId>
-      <artifactId>selenium</artifactId>
-    </dependency>
-
   </dependencies>
 </project>

@@ -19,6 +19,7 @@ import com.vaadin.flow.component.button.testbench.ButtonElement;
 import com.vaadin.flow.component.combobox.testbench.ComboBoxElement;
 import com.vaadin.flow.component.grid.testbench.GridElement;
 import com.vaadin.flow.component.html.testbench.LabelElement;
+import com.vaadin.flow.component.html.testbench.SpanElement;
 import com.vaadin.flow.component.textfield.testbench.PasswordFieldElement;
 import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 import com.vaadin.testbench.TestBenchTestCase;
@@ -50,6 +51,10 @@ public abstract class AbstractVaadinPageObject
 
   public WithID<ButtonElement> btn() {
     return id -> testCase.$(ButtonElement.class).id(id);
+  }
+
+  public WithID<SpanElement> span() {
+    return id -> testCase.$(SpanElement.class).id(id);
   }
 
   public WithID<LabelElement> label() {

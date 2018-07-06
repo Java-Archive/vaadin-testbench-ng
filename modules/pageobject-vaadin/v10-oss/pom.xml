@@ -20,20 +20,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>rapidpm-testbench-ng-pageobject-vaadin</artifactId>
+    <artifactId>testbench-ng-m-pageobject-vaadin</artifactId>
     <groupId>org.rapidpm</groupId>
     <version>0.3.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>rapidpm-testbench-ng-pageobject-vaadin-v10-oss</artifactId>
+  <artifactId>testbench-ng-m-pageobject-vaadin-v10-oss</artifactId>
 
   <dependencyManagement>
     <dependencies>
       <!--Version definitions from parent-->
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>rapidpm-testbench-ng-bom-vaadin-v10</artifactId>
+        <artifactId>testbench-ng-bom-vaadin-v10</artifactId>
         <version>${project.version}</version>
         <scope>import</scope>
         <type>pom</type>
@@ -45,7 +45,7 @@
   <dependencies>
     <dependency>
       <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-testbench-ng-pageobject-vaadin-generic</artifactId>
+      <artifactId>testbench-ng-m-pageobject-vaadin-generic</artifactId>
     </dependency>
 
     <dependency>

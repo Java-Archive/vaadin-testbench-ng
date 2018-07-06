@@ -32,7 +32,7 @@ public class WebComponentList<T extends WebComponent> implements List<T> {
   private Class<T> webComponentClass;
   private List<WebElement> wrappedWebElements;
   private List<T> webComponents;
-  private WebComponentFactory webComponentFactory = new DefaultWebComponentFactory();
+  private WebComponentFactory webComponentFactory;
   private WebDriver driver;
   private ParameterizedType genericTypeArguments;
 
