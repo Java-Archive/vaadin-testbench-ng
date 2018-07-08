@@ -25,7 +25,7 @@
   <parent>
     <groupId>org.rapidpm</groupId>
     <artifactId>rapidpm-dependencies</artifactId>
-    <version>3.7.0</version>
+    <version>4.0.0</version>
   </parent>
 
   <artifactId>rapidpm-vaadin-testbench-ng</artifactId>
@@ -78,8 +78,8 @@
   </licenses>
 
   <properties>
-    <maven.compiler.target>8</maven.compiler.target>
-    <maven.compiler.source>8</maven.compiler.source>
+    <maven.compiler.target>10</maven.compiler.target>
+    <maven.compiler.source>10</maven.compiler.source>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -96,16 +96,16 @@
 
 
     <!--Change this one in BOM´s too!!!!-->
-    <rapidpm-dependencies.version>3.7.0</rapidpm-dependencies.version>
-    <rapidpm-functional-reactive.version>0.6.2</rapidpm-functional-reactive.version>
-    <rapidpm-microservice.version>1.0.7-01</rapidpm-microservice.version>
+    <rapidpm-dependencies.version>4.0.0</rapidpm-dependencies.version>
+    <rapidpm-functional-reactive.version>0.7.0</rapidpm-functional-reactive.version>
+    <rapidpm-microservice.version>1.1.0</rapidpm-microservice.version>
 
     <!--Nano container-->
     <nano-vaadin-v08.version>0.2.0-SNAPSHOT</nano-vaadin-v08.version>
     <nano-vaadin-v10.version>0.1.0</nano-vaadin-v10.version>
 
     <!--Initializer-->
-    <meecrowave.version>1.2.1</meecrowave.version>
+    <meecrowave.version>1.2.2-SNAPSHOT</meecrowave.version>
     <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
     <addon-test-helpers.version>2.0</addon-test-helpers.version>
   </properties>
@@ -206,18 +206,6 @@
         </snapshotRepository>
       </distributionManagement>
     </profile>
-    <profile>
-    	<id>java-8</id>
-    	<activation>
-    		<activeByDefault>true</activeByDefault>
-    	</activation>
-    	
-    </profile>
-    <profile>
-    	<id>java-10</id>
-    	<activation>
-    		<activeByDefault>false</activeByDefault>
-    	</activation>
-    </profile>
+
   </profiles>
 </project>
