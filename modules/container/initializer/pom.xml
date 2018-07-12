@@ -23,6 +23,14 @@
       <artifactId>junit-jupiter-api</artifactId>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+    	<groupId>org.rapidpm</groupId>
+    	<artifactId>rapidpm-dependencies-core</artifactId>    
+    </dependency>
+    <dependency>
+			<groupId>org.rapidpm</groupId>
+			<artifactId>testbench-ng-m-junit5</artifactId>
+		</dependency>
   </dependencies>
   <parent>
     <groupId>org.rapidpm</groupId>

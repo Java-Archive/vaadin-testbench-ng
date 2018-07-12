@@ -16,6 +16,7 @@
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
 import java.lang.reflect.Method;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import com.google.auto.service.AutoService;
 
@@ -23,23 +24,23 @@ import com.google.auto.service.AutoService;
 public class NoContainerInitializer implements ContainerInitializer, HasLogger {
 
   @Override
-  public void beforeAll(Class<?> testClass) throws Exception {
+  public void beforeAll(Class<?> testClass, ExtensionContext context) throws Exception {
     logger()
         .info("Running tests from " + testClass.getName() + " against remote deployed application");
   }
 
   @Override
-  public void beforeEach(Method testMethod) throws Exception {
+  public void beforeEach(Method testMethod, ExtensionContext context) throws Exception {
 
   }
 
   @Override
-  public void afterEach(Method testMethod) throws Exception {
+  public void afterEach(Method testMethod, ExtensionContext context) throws Exception {
 
   }
 
   @Override
-  public void afterAll(Class<?> testClass) throws Exception {
+  public void afterAll(Class<?> testClass, ExtensionContext context) throws Exception {
 
   }
 

@@ -15,6 +15,9 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
+import static org.rapidpm.vaadin.addons.junit5.extensions.ExtensionFunctions.store;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ServiceLoader;
@@ -23,13 +26,16 @@ import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.ParameterContext;
+import org.junit.jupiter.api.extension.ParameterResolutionException;
+import org.junit.jupiter.api.extension.ParameterResolver;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 
 /**
  *
  */
 public class ServletContainerExtension implements BeforeAllCallback, BeforeEachCallback,
-    AfterEachCallback, AfterAllCallback, HasLogger {
+    AfterEachCallback, AfterAllCallback, ParameterResolver, HasLogger {
 
   private final ContainerInitializer containerIntializer;
 
@@ -52,23 +58,47 @@ public class ServletContainerExtension implements BeforeAllCallback, BeforeEachC
   @Override
   public void beforeEach(ExtensionContext context) throws Exception {
     logger().info("ServletContainerExtension - beforeEach");
-    containerIntializer.beforeEach(context.getTestMethod().get());
+    containerIntializer.beforeEach(context.getTestMethod().get(), context);
   }
 
   @Override
   public void afterEach(ExtensionContext context) throws Exception {
     logger().info("ServletContainerExtension - afterEach");
-    containerIntializer.afterEach(context.getTestMethod().get());
+      containerIntializer.afterEach(context.getTestMethod().get(), context);
   }
 
   @Override
   public void beforeAll(ExtensionContext context) throws Exception {
-    containerIntializer.beforeAll(context.getTestClass().get());
+    containerIntializer.beforeAll(context.getTestClass().get(), context);
   }
 
   @Override
   public void afterAll(ExtensionContext context) throws Exception {
-    containerIntializer.afterAll(context.getTestClass().get());
+    containerIntializer.afterAll(context.getTestClass().get(), context);
+  }
+
+  @Override
+  public Object resolveParameter(ParameterContext parameterContext,
+      ExtensionContext extensionContext) throws ParameterResolutionException {
+    Class<?> containerInfoClass = parameterContext.getParameter().getType();
+    try {
+      int port = (int) store().apply(extensionContext).get(NetworkFunctions.SERVER_PORT);
+      Constructor<?> constructor = containerInfoClass.getConstructor(Integer.TYPE);
+      ContainerInfo containerInfo = ContainerInfo.class.cast(constructor.newInstance(port));
+
+      return containerInfo;
+    } catch (NoSuchMethodException | IllegalAccessException | InstantiationException
+        | InvocationTargetException e) {
+      throw new ParameterResolutionException("was not able to create ContainerInfo instance", e);
+    }
+
+  }
+
+  @Override
+  public boolean supportsParameter(ParameterContext parameterContext,
+      ExtensionContext extensionContext) throws ParameterResolutionException {
+    final Class<?> type = parameterContext.getParameter().getType();
+    return ContainerInfo.class.isAssignableFrom(type);
 
   }
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright © 2017 Sven Ruppert (sven.ruppert@gmail.com)
+ * Copyright © 2018 Daniel Nordhoff-Vergien
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,16 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
-import java.lang.reflect.Method;
-import org.junit.jupiter.api.extension.ExtensionContext;
+import static java.lang.annotation.ElementType.TYPE;
 
-public interface ContainerInitializer {
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
+@Retention(RetentionPolicy.RUNTIME)
+@Target(TYPE)
+public @interface SpringBoot2Conf {
+  public Class<?> source();
 
-  void beforeAll(Class<?> testClass, ExtensionContext context) throws Exception;
-
-  void beforeEach(Method testMethod, ExtensionContext context) throws Exception;
-
-  void afterEach(Method testMethod, ExtensionContext context) throws Exception;
-
-  void afterAll(Class<?> testClass, ExtensionContext context) throws Exception;
-
-
-  //set Metadata
-
-
+  public String[] args() default {};
 }

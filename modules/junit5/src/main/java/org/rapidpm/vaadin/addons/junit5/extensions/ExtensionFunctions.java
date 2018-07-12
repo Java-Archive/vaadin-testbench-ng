@@ -15,11 +15,10 @@
  */
 package org.rapidpm.vaadin.addons.junit5.extensions;
 
-import org.junit.jupiter.api.extension.ExtensionContext;
-
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import org.junit.jupiter.api.extension.ExtensionContext;
 
 /**
  *
@@ -40,11 +39,22 @@ public interface ExtensionFunctions {
       return namespace;
     };
   }
-
+  static Function<ExtensionContext, ExtensionContext.Namespace> namespaceForClass() {
+    return (ctx) -> {
+      String name       = ctx.getTestClass().get().getName();
+      ExtensionContext.Namespace namespace = ExtensionContext.Namespace.create(ExtensionFunctions.class,
+                                                                               name
+      );
+      return namespace;
+    };
+  }
   static Function<ExtensionContext, ExtensionContext.Store> storeGlobal() {
     return (context) -> context.getStore(NAMESPACE_GLOBAL);
   }
 
+  static Function<ExtensionContext, ExtensionContext.Store> storeClass() {
+    return (context) -> context.getStore(namespaceForClass().apply(context));
+  }
   static Function<ExtensionContext, ExtensionContext.Store> store() {
     return (context) -> context.getStore(namespaceFor().apply(context));
   }

@@ -15,17 +15,19 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
-import com.google.auto.service.AutoService;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.SERVER_IP;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.SERVER_PORT;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.freePort;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.localeIP;
+import java.lang.reflect.Method;
+import java.net.URI;
 import org.eclipse.jetty.server.Server;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.frp.functions.CheckedFunction;
 import org.rapidpm.frp.model.Result;
 import org.vaadin.addonhelpers.TServer;
-
-import java.lang.reflect.Method;
-import java.net.URI;
-
-import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.*;
+import com.google.auto.service.AutoService;
 
 @AutoService(ContainerInitializer.class)
 public class AddonTestHelperContainerInitializer implements ContainerInitializer, HasLogger {
@@ -33,7 +35,7 @@ public class AddonTestHelperContainerInitializer implements ContainerInitializer
   private Result<Server> server = Result.failure("not initialized so far..");
 
   @Override
-  public void beforeAll(Class<?> testClass) throws Exception {
+  public void beforeAll(Class<?> testClass, ExtensionContext context) throws Exception {
     final String userVaadinServerIP = localeIP().get();
     logger().info(
         SERVER_IP + " ServletContainerExtension - will be -> " + userVaadinServerIP);
@@ -62,17 +64,17 @@ public class AddonTestHelperContainerInitializer implements ContainerInitializer
   }
 
   @Override
-  public void beforeEach(Method testMethod) throws Exception {
+  public void beforeEach(Method testMethod, ExtensionContext context) throws Exception {
     // NOOP
   }
 
   @Override
-  public void afterEach(Method testMethod) throws Exception {
+  public void afterEach(Method testMethod, ExtensionContext context) throws Exception {
     // NOOP
   }
 
   @Override
-  public void afterAll(Class<?> testClass) throws Exception {
+  public void afterAll(Class<?> testClass, ExtensionContext context) throws Exception {
     server
         .flatMap((CheckedFunction<Server, String>) server -> {
           URI serverURI = server.getURI();

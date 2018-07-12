@@ -15,23 +15,22 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
-import com.google.auto.service.AutoService;
+import static java.lang.System.getProperty;
+import static java.lang.System.setProperty;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.localeIP;
+import java.lang.reflect.Method;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.microservice.Main;
 import org.rapidpm.microservice.MainUndertow;
-
-import java.lang.reflect.Method;
-
-import static java.lang.System.getProperty;
-import static java.lang.System.setProperty;
-import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.localeIP;
+import com.google.auto.service.AutoService;
 
 @AutoService(ContainerInitializer.class)
 public class RapidPMContainerInitializer implements ContainerInitializer, HasLogger {
 
   @Override
-  public void beforeEach(Method testMethod) throws Exception {
+  public void beforeEach(Method testMethod, ExtensionContext context) throws Exception {
     String          localIP   = localeIP().get();
     final PortUtils portUtils = new PortUtils();
     setProperty(MainUndertow.REST_HOST_PROPERTY, localIP);
@@ -49,7 +48,7 @@ public class RapidPMContainerInitializer implements ContainerInitializer, HasLog
   }
 
   @Override
-  public void afterEach(Method testMethod) throws Exception {
+  public void afterEach(Method testMethod, ExtensionContext context) throws Exception {
     Main.stop();
 
     // remove all Properties..
@@ -57,12 +56,12 @@ public class RapidPMContainerInitializer implements ContainerInitializer, HasLog
   }
 
   @Override
-  public void afterAll(Class<?> testClass) throws Exception {
+  public void afterAll(Class<?> testClass, ExtensionContext context) throws Exception {
     // nothing
   }
 
   @Override
-  public void beforeAll(Class<?> testClass) throws Exception {
+  public void beforeAll(Class<?> testClass, ExtensionContext context) throws Exception {
     // nothing
   }
 }

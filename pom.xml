@@ -107,6 +107,7 @@
     <!--Initializer-->
     <meecrowave.version>1.2.2-SNAPSHOT</meecrowave.version>
     <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
+    <spring-boot2.version>2.0.3.RELEASE</spring-boot2.version>
     <addon-test-helpers.version>2.0</addon-test-helpers.version>
   </properties>
 

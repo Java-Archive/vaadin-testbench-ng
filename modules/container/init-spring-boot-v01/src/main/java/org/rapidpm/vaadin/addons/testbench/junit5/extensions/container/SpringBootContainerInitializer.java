@@ -15,12 +15,12 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
+import java.lang.reflect.Method;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 import com.google.auto.service.AutoService;
-
-import java.lang.reflect.Method;
 
 
 @AutoService(ContainerInitializer.class)
@@ -29,7 +29,7 @@ public class SpringBootContainerInitializer implements ContainerInitializer {
   private ApplicationContext applicationContext;
 
   @Override
-  public void beforeAll(Class<?> testClass) throws Exception {
+  public void beforeAll(Class<?> testClass, ExtensionContext context) throws Exception {
     SpringBootConf springBootConf = AnnotationUtils.getAnnotation(testClass, SpringBootConf.class);
     if (springBootConf == null) {
       throw new IllegalStateException("No @SpringBootConf annotation found");
@@ -42,13 +42,13 @@ public class SpringBootContainerInitializer implements ContainerInitializer {
   }
 
   @Override
-  public void beforeEach(Method testMethod) throws Exception { }
+  public void beforeEach(Method testMethod, ExtensionContext context) throws Exception { }
 
   @Override
-  public void afterEach(Method testMethod) throws Exception { }
+  public void afterEach(Method testMethod, ExtensionContext context) throws Exception { }
 
   @Override
-  public void afterAll(Class<?> testClass) throws Exception {
+  public void afterAll(Class<?> testClass, ExtensionContext context) throws Exception {
     SpringApplication.exit(applicationContext);
   }
 }
