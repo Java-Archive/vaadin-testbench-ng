@@ -56,10 +56,10 @@ pipeline:
 
 matrix:
   JDK_VERSION:
-  - svenruppert/maven-3.5-jdk-08
+          #  - svenruppert/maven-3.5-jdk-08
 #  - svenruppert/maven-3.5-jdk-openjdk-09
 #  - svenruppert/maven-3.5-jdk-openjdk-10
-#  - svenruppert/maven-3.5-jdk-openjdk-11
+  - svenruppert/maven-3.5-jdk-openjdk-11
 ##  - svenruppert/maven-3.5-jdk-openjdk-shenandoah-08
 ##  - svenruppert/maven-3.5-jdk-openjdk-shenandoah-09
 ##  - svenruppert/maven-3.5-jdk-openjdk-shenandoah-10
