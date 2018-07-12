@@ -2,6 +2,7 @@ package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
 import com.google.auto.service.AutoService;
 import io.undertow.Undertow;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.frp.model.Result;
@@ -20,12 +21,12 @@ public class NanoUndertowV08ContainerInitializer implements ContainerInitializer
   private Result<CoreUIService> serviceResult = Result.failure("not initialized so far");
 
   @Override
-  public void beforeAll(Class<?> testClass) throws Exception {
+  public void beforeAll(Class<?> testClass, ExtensionContext context) throws Exception {
 
   }
 
   @Override
-  public void beforeEach(Method testMethod) throws Exception {
+  public void beforeEach(Method testMethod, ExtensionContext context) throws Exception {
     String          localIP   = localeIP().get();
     final PortUtils portUtils = new PortUtils();
     setProperty(CoreUIService.CORE_UI_SERVER_HOST, localIP);
@@ -42,14 +43,14 @@ public class NanoUndertowV08ContainerInitializer implements ContainerInitializer
   }
 
   @Override
-  public void afterEach(Method testMethod) throws Exception {
+  public void afterEach(Method testMethod, ExtensionContext context) throws Exception {
     serviceResult
         .flatMap(s -> s.undertow)
         .ifPresent(Undertow::stop);
   }
 
   @Override
-  public void afterAll(Class<?> testClass) throws Exception {
+  public void afterAll(Class<?> testClass, ExtensionContext context) throws Exception {
 
   }
 }
