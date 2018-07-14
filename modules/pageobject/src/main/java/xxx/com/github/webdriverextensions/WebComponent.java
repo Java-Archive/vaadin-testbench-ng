@@ -75,6 +75,7 @@ public abstract class WebComponent
     }
   }
 
+
   @Override
   public void sendKeys(CharSequence... keysToSend) {
     if (delegateWebElement != null) {

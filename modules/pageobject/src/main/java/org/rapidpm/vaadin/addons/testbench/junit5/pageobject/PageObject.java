@@ -15,22 +15,20 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.pageobject;
 
-import org.rapidpm.dependencies.core.logger.HasLogger;
-import org.rapidpm.frp.functions.CheckedExecutor;
-import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions;
-import org.rapidpm.vaadin.addons.webdriver.HasDriver;
-
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-
 import static java.lang.System.getProperties;
 import static org.rapidpm.frp.matcher.Case.match;
 import static org.rapidpm.frp.matcher.Case.matchCase;
 import static org.rapidpm.frp.model.Result.success;
 import static org.rapidpm.vaadin.addons.webdriver.WebDriverFunctions.takeScreenShot;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+import org.rapidpm.dependencies.core.logger.HasLogger;
+import org.rapidpm.frp.functions.CheckedExecutor;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.HasContainerInfo;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions;
+import org.rapidpm.vaadin.addons.webdriver.HasDriver;
 
-public interface PageObject extends HasDriver, HasLogger {
-
+public interface PageObject extends HasContainerInfo, HasDriver, HasLogger {
 
   default void loadPage() {
     final String url = url().get();
@@ -51,12 +49,11 @@ public interface PageObject extends HasDriver, HasLogger {
   }
 
   default Supplier<String> ip() {
-    return () -> property().apply(NetworkFunctions.SERVER_IP, NetworkFunctions.DEFAULT_IP);
+    return () -> getContainerInfo().getHost();
   }
 
   default Supplier<String> port() {
-    //TODO per properties
-    return () -> property().apply(NetworkFunctions.SERVER_PORT, NetworkFunctions.DEFAULT_SERVLET_PORT);
+    return () -> String.valueOf(getContainerInfo().getPort());
   }
 
   //TODO per properties

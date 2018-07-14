@@ -24,26 +24,25 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import org.rapidpm.dependencies.core.net.PortUtils;
+import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotationUtils;
 import com.google.auto.service.AutoService;
 
 @AutoService(ContainerInitializer.class)
-public class SpringBoot2ContainerInitializer implements ContainerInitializer {
+public class SpringBoot2ContainerInitializer implements ContainerInitializer, HasLogger {
 
   private static final String SPRING_BOOT2_APPLICATION_CONTEXT = "spring-boot2-applicationContext";
   private static final String SPRING_BOOT2_APP_CLASS = "spring-boot2-app-class";
   private static final String SPRING_BOOT2_ARGS = "spring-boot2-args";
-
 
   @Override
   public void beforeAll(Class<?> testClass, ExtensionContext context) throws Exception {
     SpringBoot2Conf springBootConf =
         AnnotationUtils.getAnnotation(testClass, SpringBoot2Conf.class);
     if (springBootConf == null) {
-      throw new IllegalStateException("No @SpringBootConf annotation found");
+      throw new IllegalStateException("No @SpringBoot2Conf annotation found");
     }
     Class<?> appClass = springBootConf.source();
     if (appClass == null) {
@@ -72,7 +71,9 @@ public class SpringBoot2ContainerInitializer implements ContainerInitializer {
 
   @Override
   public void beforeEach(Method testMethod, ExtensionContext context) throws Exception {
-    int port = new PortUtils().nextFreePortForTest();
+    int port = preparePort(context);
+    prepareIP(context);
+
     List<String> argsWithoutPort =
         ((List<String>) storeClass().apply(context).get(SPRING_BOOT2_ARGS, List.class)).stream()
             .filter(arg -> !arg.startsWith("--server.port=")).collect(Collectors.toList());
@@ -82,18 +83,19 @@ public class SpringBoot2ContainerInitializer implements ContainerInitializer {
         SpringApplication.run(clazz, argsWithoutPort.toArray(new String[argsWithoutPort.size()]));
 
     storeApplicationContext().accept(context, applicationContext);
-
-    store().apply(context).put(NetworkFunctions.SERVER_PORT, port);
   }
+
 
   @Override
   public void afterEach(Method testMethod, ExtensionContext context) throws Exception {
     ApplicationContext applicationContext = getApplicationContext().apply(context);
     SpringApplication.exit(applicationContext);
     removeApplicationContext();
-    store().apply(context).remove(NetworkFunctions.SERVER_PORT);
-
+    cleanUpPort(context);
+    cleanUpIP(context);
   }
+
+
 
   @Override
   public void afterAll(Class<?> testClass, ExtensionContext context) throws Exception {

@@ -16,6 +16,7 @@
 package org.rapidpm.vaadin.addons.testbench.junit5.extension.compattest;
 
 import static java.util.Collections.singletonList;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ExtensionContextFunctions.containerInfo;
 import static org.rapidpm.vaadin.addons.webdriver.BrowserDriverFunctions.webDriverInstances;
 import static org.rapidpm.vaadin.addons.webdriver.WebDriverFunctions.webdriverName;
 import static org.rapidpm.vaadin.addons.webdriver.junit5.WebdriverExtensionFunctions.storeWebDriver;
@@ -36,6 +37,7 @@ import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.frp.functions.CheckedFunction;
 import org.rapidpm.frp.memoizer.Memoizer;
 import org.rapidpm.frp.model.Result;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ContainerInfo;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.PageObject;
 import xxx.com.github.webdriverextensions.WebDriverExtensionFieldDecorator;
 
@@ -85,9 +87,9 @@ public class PageObjectInvocationContextProvider implements TestTemplateInvocati
               .getType();
 
           final Result<PageObject> po = ((CheckedFunction<Class<?>, PageObject>) aClass -> {
-            final Constructor<?> constructor = pageObjectClass.getConstructor(WebDriver.class);
+            final Constructor<?> constructor = pageObjectClass.getConstructor(WebDriver.class, ContainerInfo.class);
             WebDriver webDriver = webdriver();
-            PageObject page = PageObject.class.cast(constructor.newInstance(webDriver));
+            PageObject page = PageObject.class.cast(constructor.newInstance(webDriver, containerInfo().apply(extensionContext)));
             PageFactory.initElements(new WebDriverExtensionFieldDecorator(webDriver), page);
             return page;
           })

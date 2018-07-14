@@ -16,15 +16,18 @@
 package org.rapidpm.vaadin.addons.testbench.junit5.pageobject;
 
 import org.openqa.selenium.WebDriver;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ContainerInfo;
 
 public abstract class AbstractPageObject implements PageObject {
 
 
-  public AbstractPageObject(WebDriver webdriver) {
+  public AbstractPageObject(WebDriver webdriver, ContainerInfo containerInfo) {
     setDriver(webdriver);
+    setContainerInfo(containerInfo);
   }
 
   private WebDriver driver;
+  private ContainerInfo containerInfo;
 
   @Override
   public WebDriver getDriver() {
@@ -36,4 +39,12 @@ public abstract class AbstractPageObject implements PageObject {
     this.driver = driver;
   }
 
+  @Override
+  public ContainerInfo getContainerInfo() {
+    return containerInfo;
+  }
+
+  public void setContainerInfo(ContainerInfo containerInfo) {
+    this.containerInfo = containerInfo;
+  }
 }

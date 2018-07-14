@@ -24,10 +24,6 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-    	<groupId>org.rapidpm</groupId>
-    	<artifactId>rapidpm-dependencies-core</artifactId>    
-    </dependency>
-    <dependency>
 			<groupId>org.rapidpm</groupId>
 			<artifactId>testbench-ng-m-junit5</artifactId>
 		</dependency>

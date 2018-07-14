@@ -15,15 +15,15 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui;
 
+import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui.ButtonComponentDemo.BUTTON_1;
+import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui.ButtonComponentDemo.BUTTON_2;
+import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui.ButtonComponentDemo.CLICK_COUNT;
 import java.util.function.Supplier;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ContainerInfo;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.AbstractVaadinPageObject;
-
-import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui.ButtonComponentDemo.BUTTON_1;
-import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui.ButtonComponentDemo.BUTTON_2;
-import static org.rapidpm.vaadin.addons.testbench.junit5.pageobject.vaadin.ui.ButtonComponentDemo.CLICK_COUNT;
 
 public class ButtonComponentDemoPageObjectAbstract extends AbstractVaadinPageObject {
 
@@ -34,8 +34,8 @@ public class ButtonComponentDemoPageObjectAbstract extends AbstractVaadinPageObj
   @FindBy(id = CLICK_COUNT)
   private WebElement         clickCount;
 
-  public ButtonComponentDemoPageObjectAbstract(WebDriver webdriver) {
-    super(webdriver);
+  public ButtonComponentDemoPageObjectAbstract(WebDriver webdriver, ContainerInfo containerInfo) {
+    super(webdriver, containerInfo);
   }
 
   @Override

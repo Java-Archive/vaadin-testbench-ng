@@ -15,6 +15,8 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.pageobject;
 
+import org.openqa.selenium.WebDriver;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ContainerInfo;
 import com.vaadin.flow.component.button.testbench.ButtonElement;
 import com.vaadin.flow.component.combobox.testbench.ComboBoxElement;
 import com.vaadin.flow.component.grid.testbench.GridElement;
@@ -23,7 +25,6 @@ import com.vaadin.flow.component.html.testbench.SpanElement;
 import com.vaadin.flow.component.textfield.testbench.PasswordFieldElement;
 import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 import com.vaadin.testbench.TestBenchTestCase;
-import org.openqa.selenium.WebDriver;
 
 /**
  *
@@ -34,8 +35,8 @@ public abstract class AbstractVaadinPageObject
 
   private TestBenchTestCase testCase = new TestBenchTestCase() { };
 
-  public AbstractVaadinPageObject(WebDriver webdriver) {
-    super(webdriver);
+  public AbstractVaadinPageObject(WebDriver webdriver, ContainerInfo containerInfo) {
+    super(webdriver, containerInfo);
     //vaadin specific init
     testCase.setDriver(webdriver);
     setDriver(testCase.getDriver());

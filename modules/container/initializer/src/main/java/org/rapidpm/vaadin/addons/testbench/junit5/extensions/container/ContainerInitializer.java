@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
-
+import static org.rapidpm.vaadin.addons.junit5.extensions.ExtensionFunctions.store;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.freePort;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.localeIP;
 import java.lang.reflect.Method;
 import org.junit.jupiter.api.extension.ExtensionContext;
+import org.rapidpm.dependencies.core.logger.HasLogger;
 
-public interface ContainerInitializer {
-
+public interface ContainerInitializer extends HasLogger {
 
   void beforeAll(Class<?> testClass, ExtensionContext context) throws Exception;
 
@@ -29,8 +31,30 @@ public interface ContainerInitializer {
 
   void afterAll(Class<?> testClass, ExtensionContext context) throws Exception;
 
+  default String prepareIP(ExtensionContext context) {
+    final String serverIP = localeIP().get();
+    store().apply(context).put(NetworkFunctions.SERVER_IP, serverIP);
+    logger().info(
+         "IP ServletContainerExtension - will be -> " + serverIP);
+    return serverIP;
+  }
 
-  //set Metadata
+  default int preparePort(ExtensionContext context) {
+    final int port = freePort().get().ifAbsent(() -> {
+      throw new RuntimeException("no free Port available...");
+    }).get();
+    store().apply(context).put(NetworkFunctions.SERVER_PORT, port);
+    logger().info(
+        "Port ServletContainerExtension - will be -> " + port);
+    return port;
+  }
 
+  default void cleanUpPort(ExtensionContext context) {
+    store().apply(context).remove(NetworkFunctions.SERVER_PORT);
+  }
+
+  default void cleanUpIP(ExtensionContext context) {
+    store().apply(context).remove(NetworkFunctions.SERVER_IP);
+  }
 
 }

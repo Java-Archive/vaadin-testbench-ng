@@ -23,8 +23,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(ServletContainerExtension.class)
-@SpringBoot2Conf(source = DemoApp.class)
-public class TestSpringBoot2Initializer {
+@SpringBootConf(source = DemoApp.class)
+public class TestSpringBootInitializer {
 
   @Test
   void test_001(ContainerInfo containerInfo) throws MalformedURLException, IOException {

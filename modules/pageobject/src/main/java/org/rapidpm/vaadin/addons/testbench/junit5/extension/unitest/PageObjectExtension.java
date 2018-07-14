@@ -15,11 +15,10 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extension.unitest;
 
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ExtensionContextFunctions.containerInfo;
 import static org.rapidpm.vaadin.addons.webdriver.junit5.WebdriverExtensionFunctions.webdriver;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
@@ -27,9 +26,9 @@ import org.junit.jupiter.api.extension.ParameterResolver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.rapidpm.dependencies.core.logger.HasLogger;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ContainerInfo;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.AbstractPageObject;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.PageObject;
-
 import xxx.com.github.webdriverextensions.WebDriverExtensionFieldDecorator;
 
 /**
@@ -52,9 +51,9 @@ public class PageObjectExtension implements ParameterResolver, HasLogger {
     Class<?>        pageObjectClass = parameterContext.getParameter().getType();
     try {
       Constructor<?> constructor =
-          pageObjectClass.getConstructor(WebDriver.class);
+          pageObjectClass.getConstructor(WebDriver.class, ContainerInfo.class);
          AbstractPageObject page = AbstractPageObject.class
-               .cast(constructor.newInstance(webDriver));
+               .cast(constructor.newInstance(webDriver, containerInfo().apply(extensionContext)));
          PageFactory.initElements(
                new WebDriverExtensionFieldDecorator(webDriver), page);
          return page;

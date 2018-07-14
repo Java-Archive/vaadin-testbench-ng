@@ -15,9 +15,7 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
-import static org.rapidpm.vaadin.addons.junit5.extensions.ExtensionFunctions.store;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ExtensionContextFunctions.containerInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ServiceLoader;
@@ -80,19 +78,14 @@ public class ServletContainerExtension implements BeforeAllCallback, BeforeEachC
   @Override
   public Object resolveParameter(ParameterContext parameterContext,
       ExtensionContext extensionContext) throws ParameterResolutionException {
-    Class<?> containerInfoClass = parameterContext.getParameter().getType();
-    try {
-      int port = (int) store().apply(extensionContext).get(NetworkFunctions.SERVER_PORT);
-      Constructor<?> constructor = containerInfoClass.getConstructor(Integer.TYPE);
-      ContainerInfo containerInfo = ContainerInfo.class.cast(constructor.newInstance(port));
-
-      return containerInfo;
-    } catch (NoSuchMethodException | IllegalAccessException | InstantiationException
-        | InvocationTargetException e) {
-      throw new ParameterResolutionException("was not able to create ContainerInfo instance", e);
+    if (ContainerInfo.class.isAssignableFrom(parameterContext.getParameter().getType())) {
+      return containerInfo().apply(extensionContext);
+    } else {
+      throw new ParameterResolutionException("was not able to create ContainerInfo instance");
     }
-
   }
+
+
 
   @Override
   public boolean supportsParameter(ParameterContext parameterContext,

@@ -13,21 +13,25 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.container;
 
-public class ContainerInfo {
-  private final int port;
-  private final String host;
+import java.io.IOException;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 
-  public ContainerInfo(int port, String host) {
-    super();
-    this.port = port;
-    this.host = host;
-  }
 
-  public int getPort() {
-    return port;
-  }
+public class DemoServlet extends GenericServlet {
 
-  public String getHost() {
-    return host;
+  @Autowired
+  private Environment environment;
+
+  @Override
+  public void service(ServletRequest request, ServletResponse response)
+      throws ServletException, IOException {
+    response.setContentType("text/plain");
+    response.getWriter()
+        .append("Hello World on port " + environment.getProperty("local.server.port"));
   }
 }
