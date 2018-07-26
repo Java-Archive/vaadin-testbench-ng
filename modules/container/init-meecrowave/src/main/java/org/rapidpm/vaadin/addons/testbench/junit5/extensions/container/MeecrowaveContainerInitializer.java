@@ -7,7 +7,6 @@ import org.rapidpm.dependencies.core.logger.HasLogger;
 
 import java.lang.reflect.Method;
 
-import static java.lang.System.setProperty;
 import static org.rapidpm.vaadin.addons.junit5.extensions.ExtensionFunctions.store;
 import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.localeIP;
 
