@@ -18,6 +18,7 @@ package junit.org.rapidpm.vaadin.v08.tb.demo;
 import com.vaadin.testbench.elements.ButtonElement;
 import com.vaadin.testbench.elements.LabelElement;
 import org.openqa.selenium.WebDriver;
+import org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.ContainerInfo;
 import org.rapidpm.vaadin.addons.testbench.junit5.pageobject.AbstractVaadinPageObject;
 import org.rapidpm.vaadin.v08.tb.demo.BasicTestUI;
 
@@ -27,8 +28,8 @@ import org.rapidpm.vaadin.v08.tb.demo.BasicTestUI;
  */
 public class BasicTestPageObject extends AbstractVaadinPageObject {
 
-  public BasicTestPageObject(WebDriver webDriver) {
-    super(webDriver);
+  public BasicTestPageObject(WebDriver webDriver, ContainerInfo containerInfo) {
+    super(webDriver, containerInfo);
   }
 
   public ButtonElement button() {

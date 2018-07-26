@@ -8,6 +8,7 @@ import org.rapidpm.dependencies.core.logger.HasLogger;
 import java.lang.reflect.Method;
 
 import static java.lang.System.setProperty;
+import static org.rapidpm.vaadin.addons.junit5.extensions.ExtensionFunctions.store;
 import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.localeIP;
 
 @AutoService(ContainerInitializer.class)
@@ -32,10 +33,10 @@ public class MeecrowaveContainerInitializer implements ContainerInitializer, Has
       }
     }).bake();
 
-    //mapping to TB Vars
-    setProperty(NetworkFunctions.SERVER_WEBAPP, "/");
-    setProperty(NetworkFunctions.SERVER_IP, meecrowave.getConfiguration().getHost());
-    setProperty(NetworkFunctions.SERVER_PORT, String.valueOf(meecrowave.getConfiguration().getHttpPort()));
+    store().apply(context).put(NetworkFunctions.SERVER_IP, meecrowave.getConfiguration().getHost());
+    store().apply(context).put(NetworkFunctions.SERVER_PORT, meecrowave.getConfiguration().getHttpPort());
+    store().apply(context).put(NetworkFunctions.SERVER_WEBAPP, "/");
+
   }
 
   @Override

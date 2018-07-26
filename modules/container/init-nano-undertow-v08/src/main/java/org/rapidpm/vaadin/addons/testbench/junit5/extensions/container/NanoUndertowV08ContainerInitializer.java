@@ -6,12 +6,12 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.rapidpm.dependencies.core.logger.HasLogger;
 import org.rapidpm.dependencies.core.net.PortUtils;
 import org.rapidpm.frp.model.Result;
+import org.rapidpm.vaadin.nano.Config;
 import org.rapidpm.vaadin.nano.CoreUIService;
 
 import java.lang.reflect.Method;
 
-import static java.lang.System.getProperty;
-import static java.lang.System.setProperty;
+import static org.rapidpm.vaadin.addons.junit5.extensions.ExtensionFunctions.store;
 import static org.rapidpm.vaadin.addons.testbench.junit5.extensions.container.NetworkFunctions.localeIP;
 
 
@@ -27,19 +27,17 @@ public class NanoUndertowV08ContainerInitializer implements ContainerInitializer
 
   @Override
   public void beforeEach(Method testMethod, ExtensionContext context) throws Exception {
-    String          localIP   = localeIP().get();
-    final PortUtils portUtils = new PortUtils();
-    setProperty(CoreUIService.CORE_UI_SERVER_HOST, localIP);
-    setProperty(CoreUIService.CORE_UI_SERVER_PORT, portUtils.nextFreePortForTest() + "");
+    String          localIP      = localeIP().get();
+    final PortUtils portUtils    = new PortUtils();
+    int             nextFreePort = portUtils.nextFreePortForTest();
 
-    //mapping to TB Vars
-    setProperty(NetworkFunctions.SERVER_WEBAPP, "/");
-    setProperty(NetworkFunctions.SERVER_IP, getProperty(CoreUIService.CORE_UI_SERVER_HOST));
-    setProperty(NetworkFunctions.SERVER_PORT, getProperty(CoreUIService.CORE_UI_SERVER_PORT));
+    store().apply(context).put(NetworkFunctions.SERVER_IP, localIP);
+    store().apply(context).put(NetworkFunctions.SERVER_PORT, nextFreePort);
+    store().apply(context).put(NetworkFunctions.SERVER_WEBAPP, "/");
 
     serviceResult = Result
         .success(new CoreUIService())
-        .ifPresent(CoreUIService::startup);
+        .ifPresent(service -> service.startup(new Config(localIP, nextFreePort, null)));
   }
 
   @Override

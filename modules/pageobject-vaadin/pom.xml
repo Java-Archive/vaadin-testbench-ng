@@ -71,7 +71,6 @@
     <dependency>
       <groupId>org.rapidpm</groupId>
       <artifactId>rapidpm-dependencies-core-properties</artifactId>
-      <version>${rapidpm-dependencies.version}</version>
     </dependency>
 
 
