@@ -41,7 +41,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
+    <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
 
     <testcontainers.version>1.8.0</testcontainers.version>
     <selenium.version>3.13.0</selenium.version>

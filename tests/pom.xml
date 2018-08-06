@@ -61,12 +61,12 @@
                 <driver>
                   <name>chromedriver</name>
                 </driver>
-                <driver>
-                  <name>operadriver</name>
-                </driver>
-                <driver>
-                  <name>geckodriver</name>
-                </driver>
+                <!--<driver>-->
+                  <!--<name>operadriver</name>-->
+                <!--</driver>-->
+                <!--<driver>-->
+                  <!--<name>geckodriver</name>-->
+                <!--</driver>-->
               </drivers>
             </configuration>
           </plugin>
