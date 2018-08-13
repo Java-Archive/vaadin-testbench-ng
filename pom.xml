@@ -96,8 +96,8 @@
 
 
     <!--Change this one in BOM´s too!!!!-->
-    <rapidpm-dependencies.version>4.0.4</rapidpm-dependencies.version>
-    <rapidpm-functional-reactive.version>0.7.3</rapidpm-functional-reactive.version>
+    <rapidpm-dependencies.version>04.00.05-RPM-SNAPSHOT</rapidpm-dependencies.version>
+    <rapidpm-functional-reactive.version>00.07.04-RPM-SNAPSHOT</rapidpm-functional-reactive.version>
     <rapidpm-microservice.version>1.1.1</rapidpm-microservice.version>
 
     <!--Nano container-->
