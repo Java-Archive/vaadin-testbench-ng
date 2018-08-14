@@ -119,11 +119,6 @@
     </repository>
   </repositories>
 
-  <dependencies>
-
-  </dependencies>
-
-
   <build>
     <pluginManagement>
       <plugins>

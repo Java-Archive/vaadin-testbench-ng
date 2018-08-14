@@ -28,17 +28,17 @@
 
   <artifactId>testbench-ng-m-container-init-nano-undertow-v08</artifactId>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-bom-vaadin-v08</artifactId>
-        <version>${project.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <!--<dependencyManagement>-->
+    <!--<dependencies>-->
+      <!--<dependency>-->
+        <!--<groupId>org.rapidpm</groupId>-->
+        <!--<artifactId>testbench-ng-bom-vaadin-v08</artifactId>-->
+        <!--<version>${project.version}</version>-->
+        <!--<type>pom</type>-->
+        <!--<scope>import</scope>-->
+      <!--</dependency>-->
+    <!--</dependencies>-->
+  <!--</dependencyManagement>-->
 
 
   <dependencies>

@@ -163,11 +163,11 @@
         <artifactId>testbench-ng-m-container-init-addon-tserver</artifactId>
         <version>${project.version}</version>
       </dependency>
-      <dependency>
-        <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-m-container-init-rapidpm</artifactId>
-        <version>${project.version}</version>
-      </dependency>
+      <!--<dependency>-->
+        <!--<groupId>org.rapidpm</groupId>-->
+        <!--<artifactId>testbench-ng-m-container-init-rapidpm</artifactId>-->
+        <!--<version>${project.version}</version>-->
+      <!--</dependency>-->
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-container-init-meecrowave</artifactId>
