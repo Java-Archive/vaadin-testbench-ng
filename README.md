@@ -6,8 +6,22 @@
 
 # Vaadin Testbench NG
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.rapidpm/rapidpm-vaadin-testbench-ng/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.rapidpm/rapidpm-vaadin-testbench-ng)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5618612173a4702998a432037965073)](https://www.codacy.com/project/sven-ruppert/vaadin-testbench-ng/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vaadin-developer/vaadin-testbench-ng&amp;utm_campaign=Badge_Grade_Dashboard)
+<!--
 [![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=RitUcWEyOFVWZmFGY0tTQ0xyREhKM0M1WWtkeG1wdWFLc2xFWm4rVTBldz0tLXNFRWQzM1NrdG5LMHJWUENxeTdTK1E9PQ==--c72faa283696a22e518e89ca57e90e564b2ad348)](https://www.browserstack.com/automate/public-build/RitUcWEyOFVWZmFGY0tTQ0xyREhKM0M1WWtkeG1wdWFLc2xFWm4rVTBldz0tLXNFRWQzM1NrdG5LMHJWUENxeTdTK1E9PQ==--c72faa283696a22e518e89ca57e90e564b2ad348)
+-->
 
+## 00.07.04-RPM
+* switched to new version numbers format
+  To make search/replace easier, I started with a new version format.
+  00.07.04-RPM ( -SNAPSHOT). The x.y.z is used in the same way, as before, but added RPM
+  and leading zeros to make this format different from others.
+  With this it is less possible to mix/change version numbers from 
+  other dependencies. A **0.7.4** could be used from different 
+  dependencies. ;-) 
+  
+  
 
 ## SHORT DEVELOPER INFOS ##
 
@@ -16,19 +30,6 @@
 ### Module - container
 
 ### Module - 
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 This ist the first version of my TestBench Add On. **TestBench** is 
