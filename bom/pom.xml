@@ -48,20 +48,6 @@
 
   <dependencyManagement>
     <dependencies>
-
-      <!--<dependency>-->
-        <!--<groupId>org.rapidpm.microservice</groupId>-->
-        <!--<artifactId>rapidpm-microservice-modules-core</artifactId>-->
-        <!--<scope>test</scope>-->
-        <!--<version>${rapidpm-microservice.version}</version>-->
-      <!--</dependency>-->
-      <!--<dependency>-->
-        <!--<groupId>org.rapidpm.microservice</groupId>-->
-        <!--<artifactId>rapidpm-microservice-modules-core-testutils</artifactId>-->
-        <!--<scope>test</scope>-->
-        <!--<version>${rapidpm-microservice.version}</version>-->
-      <!--</dependency>-->
-
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-dependencies-core-logger</artifactId>
