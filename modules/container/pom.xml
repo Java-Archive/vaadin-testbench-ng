@@ -29,7 +29,7 @@
     <module>initializer</module>
     <module>init-none</module>
     <module>init-addon-test-helper</module>
-    <module>init-rapidpm</module>
+    <!--<module>init-rapidpm</module>-->
     <module>init-meecrowave</module>
     <module>init-nano-undertow-v08</module>
     <!--<module>init-nano-undertow-v10</module>-->
