@@ -1,12 +1,12 @@
 /**
  * Copyright © 2017 Sven Ruppert (sven.ruppert@gmail.com)
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,18 +15,45 @@
  */
 package org.rapidpm.vaadin.v08.tb.demo;
 
-import org.rapidpm.vaadin.nano.CoreUIService;
+import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.VaadinServlet;
+import com.vaadin.ui.UI;
+import org.apache.meecrowave.Meecrowave;
 
-import static java.lang.System.setProperty;
-import static org.rapidpm.vaadin.nano.CoreUI.COMPONENT_SUPPLIER_TO_USE;
+import javax.servlet.annotation.WebServlet;
 
 public class BasicTestUIRunner {
   private BasicTestUIRunner() {
   }
 
   public static void main(String[] args) {
-    setProperty(COMPONENT_SUPPLIER_TO_USE, BasicTestUISupplier.class.getName());
-    new CoreUIService().startup();
+    new Meecrowave(new Meecrowave.Builder() {
+      {
+//        randomHttpPort();
+        setHttpPort(8080);
+        setTomcatScanning(true);
+        setTomcatAutoSetup(false);
+        setHttp2(true);
+      }
+    })
+        .bake()
+        .await();
   }
+
+  @WebServlet("/*")
+  @VaadinServletConfiguration(productionMode = false, ui = MyUI.class)
+  public static class MyProjectServlet extends VaadinServlet { }
+
+  public static class MyUI extends UI {
+   @Override
+    protected void init(VaadinRequest request) {
+
+      //set the main Component
+      setContent(new BasicTestUI());
+    }
+
+  }
+
 
 }

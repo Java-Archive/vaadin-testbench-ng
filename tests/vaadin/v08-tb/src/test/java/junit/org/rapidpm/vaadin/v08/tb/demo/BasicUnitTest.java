@@ -25,7 +25,6 @@ import org.rapidpm.vaadin.addons.testbench.junit5.extensions.unittest.VaadinWebU
  */
 
 @VaadinWebUnitTest
-@ExtendWith(TestInitExtension.class)
 class BasicUnitTest {
 
   @Test

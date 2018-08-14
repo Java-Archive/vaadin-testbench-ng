@@ -48,33 +48,7 @@
     </dependencies>
   </dependencyManagement>
 
-
-  <properties>
-    <!--<undertow.version>2.0.9.Final</undertow.version>-->
-  </properties>
-
-
   <dependencies>
-
-
-    <!--&lt;!&ndash;Infrastructure&ndash;&gt;-->
-    <!--<dependency>-->
-      <!--<groupId>io.undertow</groupId>-->
-      <!--<artifactId>undertow-core</artifactId>-->
-      <!--<version>${undertow.version}</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-      <!--<groupId>io.undertow</groupId>-->
-      <!--<artifactId>undertow-servlet</artifactId>-->
-      <!--<version>${undertow.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>io.undertow</groupId>-->
-      <!--<artifactId>undertow-websockets-jsr</artifactId>-->
-      <!--<version>${undertow.version}</version>-->
-    <!--</dependency>-->
-
     <!--Vaadin App -->
     <dependency>
       <groupId>com.vaadin</groupId>
@@ -100,11 +74,6 @@
       <groupId>org.rapidpm</groupId>
       <artifactId>testbench-ng-m-framework-v08</artifactId>
     </dependency>
-    <!--Runtime -->
-    <dependency>
-      <groupId>org.rapidpm.vaadin</groupId>
-      <artifactId>nano-vaadin-v08</artifactId>
-    </dependency>
 
     <!--For TestUI only-->
     <dependency>
@@ -120,14 +89,9 @@
     </dependency>
 
 
-    <!--<dependency>-->
-      <!--<groupId>org.rapidpm</groupId>-->
-      <!--<artifactId>testbench-ng-m-container-init-meecrowave</artifactId>-->
-      <!--<scope>test</scope>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>org.rapidpm</groupId>
-      <artifactId>testbench-ng-m-container-init-nano-undertow-v08</artifactId>
+      <artifactId>testbench-ng-m-container-init-meecrowave</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -139,6 +103,12 @@
       <groupId>org.rapidpm</groupId>
       <artifactId>testbench-ng-m-pageobject-vaadin-v08-tb</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.meecrowave</groupId>
+      <artifactId>meecrowave-core</artifactId>
+      <version>${meecrowave.version}</version>
+      <scope>compile</scope>
     </dependency>
 
 

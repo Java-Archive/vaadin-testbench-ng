@@ -24,7 +24,6 @@ import org.rapidpm.vaadin.addons.testbench.junit5.extensions.compattest.VaadinWe
  *
  */
 @VaadinWebCompatTest
-@ExtendWith(TestInitExtension.class)
 class BasicCompatTest {
 
   @TestTemplate
