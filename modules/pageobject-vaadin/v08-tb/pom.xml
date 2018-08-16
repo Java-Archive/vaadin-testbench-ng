@@ -69,7 +69,19 @@
     </dependency>
     <dependency>
       <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-testbench</artifactId>
+      <artifactId>vaadin-testbench-core</artifactId>
+      <scope>compile</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.seleniumhq.selenium</groupId>
+          <artifactId>selenium-server</artifactId>
+        </exclusion>
+      </exclusions>
+      <!--<scope>test</scope>-->
+    </dependency>
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin-testbench-api</artifactId>
     </dependency>
   </dependencies>
 

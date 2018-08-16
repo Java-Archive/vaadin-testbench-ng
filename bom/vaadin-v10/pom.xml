@@ -68,7 +68,6 @@
         <!--<scope>test</scope>-->
       </dependency>
 
-
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-framework-v10</artifactId>

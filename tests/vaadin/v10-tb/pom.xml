@@ -86,10 +86,11 @@
 
     <!--TDD-->
     <dependency>
-    <groupId>org.rapidpm</groupId>
-    <artifactId>testbench-ng-m-container-init-meecrowave</artifactId>
-    <scope>test</scope>
+      <groupId>org.rapidpm</groupId>
+      <artifactId>testbench-ng-m-container-init-meecrowave</artifactId>
+      <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.rapidpm</groupId>
       <artifactId>testbench-ng-m-pageobject-vaadin-generic</artifactId>

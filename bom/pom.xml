@@ -164,6 +164,11 @@
         <artifactId>testbench-ng-m-container-init-spring-boot-v01</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.rapidpm</groupId>
+        <artifactId>testbench-ng-m-container-init-spring-boot-v02</artifactId>
+        <version>${project.version}</version>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>
