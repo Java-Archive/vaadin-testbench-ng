@@ -33,7 +33,7 @@
       <!--<dependency>-->
         <!--<groupId>org.rapidpm</groupId>-->
         <!--<artifactId>testbench-ng-bom-vaadin-v08</artifactId>-->
-        <!--<version>${project.version}</version>-->
+        <!--<version>00.07.05-RPM-SNAPSHOT</version>-->
         <!--<type>pom</type>-->
         <!--<scope>import</scope>-->
       <!--</dependency>-->

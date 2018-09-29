@@ -36,23 +36,23 @@
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-container-init-nano-undertow-v08</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-framework-v08</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-pageobject-vaadin-v08-oss</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-pageobject-vaadin-v08-tb</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
 
       <!--API´s-->

@@ -16,6 +16,7 @@
 package org.rapidpm.vaadin.addons.framework;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.grid.Grid;
@@ -44,12 +45,18 @@ public interface ComponentIDGenerator {
         .toLowerCase(Locale.US);
   }
 
+
   static Function<String, String> caption() {
     return (id) -> id + "." + "caption";
   }
 
   static Function<String, String> placeholder() {
     return (id) -> id + "." + "placeholder";
+  }
+
+
+  static Function<Class, BiFunction<Class, String, String>> typedComponentIDGenerator() {
+    return (clazz) -> (uiClass, label) -> genericID().apply(uiClass, clazz, label);
   }
 
   static BiFunction<Class, String, String> gridID() {
@@ -82,6 +89,10 @@ public interface ComponentIDGenerator {
 
   static BiFunction<Class, String, String> passwordID() {
     return (uiClass, label) -> genericID().apply(uiClass, PasswordField.class, label);
+  }
+
+  static BiFunction<Class, String, String> checkboxID() {
+    return (uiClass, label) -> genericID().apply(uiClass, Checkbox.class, label);
   }
 
 //  Layouts

@@ -35,14 +35,14 @@
       <!--<dependency>-->
         <!--<groupId>org.rapidpm</groupId>-->
         <!--<artifactId>testbench-ng-bom</artifactId>-->
-        <!--<version>${project.version}</version>-->
+        <!--<version>00.07.05-RPM-SNAPSHOT</version>-->
         <!--<scope>import</scope>-->
         <!--<type>pom</type>-->
       <!--</dependency>-->
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-bom-vaadin-v10</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>

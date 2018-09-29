@@ -115,59 +115,59 @@
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-junit5</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-webdriver</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-pageobject</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-pageobject-vaadin-generic</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-container-init</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-container-init-none</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-container-init-addon-tserver</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
       <!--<dependency>-->
         <!--<groupId>org.rapidpm</groupId>-->
         <!--<artifactId>testbench-ng-m-container-init-rapidpm</artifactId>-->
-        <!--<version>${project.version}</version>-->
+        <!--<version>00.07.05-RPM-SNAPSHOT</version>-->
       <!--</dependency>-->
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-container-init-meecrowave</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-container-init-spring-boot-v01</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-container-init-spring-boot-v02</artifactId>
-        <version>${project.version}</version>
+        <version>00.07.05-RPM-SNAPSHOT</version>
       </dependency>
 
     </dependencies>
