@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.rapidpm</groupId>
     <artifactId>testbench-ng-m-container</artifactId>
-    <version>00.07.05-RPM-SNAPSHOT</version>
+    <version>00.07.05-RPM</version>
   </parent>
   <artifactId>testbench-ng-m-container-init-spring-boot-v01</artifactId>
 
@@ -31,7 +31,7 @@
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-bom-vaadin-v08</artifactId>
-        <version>00.07.05-RPM-SNAPSHOT</version>
+        <version>00.07.05-RPM</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

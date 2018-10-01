@@ -22,7 +22,7 @@
   <parent>
     <artifactId>testbench-ng-bom</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>00.07.05-RPM-SNAPSHOT</version>
+    <version>00.07.05-RPM</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -36,23 +36,23 @@
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-container-init-nano-undertow-v08</artifactId>
-        <version>00.07.05-RPM-SNAPSHOT</version>
+        <version>00.07.05-RPM</version>
       </dependency>
 
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-framework-v08</artifactId>
-        <version>00.07.05-RPM-SNAPSHOT</version>
+        <version>00.07.05-RPM</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-pageobject-vaadin-v08-oss</artifactId>
-        <version>00.07.05-RPM-SNAPSHOT</version>
+        <version>00.07.05-RPM</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-m-pageobject-vaadin-v08-tb</artifactId>
-        <version>00.07.05-RPM-SNAPSHOT</version>
+        <version>00.07.05-RPM</version>
       </dependency>
 
       <!--API´s-->
@@ -108,13 +108,6 @@
         <artifactId>addon-test-helpers</artifactId>
         <version>2.1</version>
         <scope>test</scope>
-      </dependency>
-
-      <!--Runtimes-->
-      <dependency>
-        <groupId>org.rapidpm.vaadin</groupId>
-        <artifactId>nano-vaadin-v08</artifactId>
-        <version>${nano-vaadin-v08.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
