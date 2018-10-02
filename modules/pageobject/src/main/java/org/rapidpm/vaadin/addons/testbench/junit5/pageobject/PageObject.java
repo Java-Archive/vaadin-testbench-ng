@@ -36,6 +36,12 @@ public interface PageObject extends HasContainerInfo, HasDriver, HasLogger {
     getDriver().get(url);
   }
 
+  default void loadPage(String route) {
+    final String url = url().get();
+    logger().info("Navigate browser to " + url + route);
+    getDriver().get(url + route);
+  }
+
   default String getTitle() {
     return getDriver().getTitle();
   }
