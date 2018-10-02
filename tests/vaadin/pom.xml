@@ -33,6 +33,7 @@
     <module>v08-tb</module>
     <module>v10-oss</module>
     <module>v10-tb</module>
+    <module>vXX-tb</module>
   </modules>
 
 

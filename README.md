@@ -12,6 +12,12 @@
 [![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=RitUcWEyOFVWZmFGY0tTQ0xyREhKM0M1WWtkeG1wdWFLc2xFWm4rVTBldz0tLXNFRWQzM1NrdG5LMHJWUENxeTdTK1E9PQ==--c72faa283696a22e518e89ca57e90e564b2ad348)](https://www.browserstack.com/automate/public-build/RitUcWEyOFVWZmFGY0tTQ0xyREhKM0M1WWtkeG1wdWFLc2xFWm4rVTBldz0tLXNFRWQzM1NrdG5LMHJWUENxeTdTK1E9PQ==--c72faa283696a22e518e89ca57e90e564b2ad348)
 -->
 
+## 00.07.05-RPM
+* added the vXX packages for the latest Vaadin version
+
+
+
+
 ## 00.07.04-RPM
 * switched to new version numbers format
   To make search/replace easier, I started with a new version format.
