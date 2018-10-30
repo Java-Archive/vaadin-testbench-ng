@@ -22,7 +22,7 @@
   <parent>
     <artifactId>testbench-ng-tests-vaadin</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>00.07.06-RPM-SNAPSHOT</version>
+    <version>00.07.06-RPM</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -33,14 +33,14 @@
       <!--<dependency>-->
       <!--<groupId>org.rapidpm</groupId>-->
       <!--<artifactId>testbench-ng-bom</artifactId>-->
-      <!--<version>00.07.06-RPM-SNAPSHOT</version>-->
+      <!--<version>00.07.06-RPM</version>-->
       <!--<scope>import</scope>-->
       <!--<type>pom</type>-->
       <!--</dependency>-->
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>testbench-ng-bom-vaadin-vXX</artifactId>
-        <version>00.07.06-RPM-SNAPSHOT</version>
+        <version>00.07.06-RPM</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
