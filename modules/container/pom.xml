@@ -21,7 +21,7 @@
   <parent>
     <groupId>org.rapidpm</groupId>
     <artifactId>testbench-ng-m</artifactId>
-    <version>00.07.06-RPM</version>
+    <version>00.07.07-RPM-SNAPSHOT</version>
   </parent>
   <artifactId>testbench-ng-m-container</artifactId>
   <packaging>pom</packaging>
