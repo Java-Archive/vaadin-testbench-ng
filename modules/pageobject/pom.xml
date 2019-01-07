@@ -22,29 +22,16 @@
   <parent>
     <artifactId>testbench-ng-m</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>00.07.07-RPM-SNAPSHOT</version>
+    <version>01.00.00-RPM-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>testbench-ng-m-pageobject</artifactId>
 
-  <dependencyManagement>
-    <dependencies>
-      <!--Versions for the testing part -->
-      <dependency>
-        <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-bom</artifactId>
-        <version>00.07.07-RPM-SNAPSHOT</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>org.rapidpm</groupId>
-      <artifactId>testbench-ng-m-webdriver</artifactId>
+      <artifactId>rapidpm-selenium-webdriver-management-impl</artifactId>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -53,107 +40,7 @@
     </dependency>
     <dependency>
       <groupId>org.rapidpm</groupId>
-      <artifactId>testbench-ng-m-container-init</artifactId>
+      <artifactId>rapidpm-junit5-ext-servlet-container-api</artifactId>
     </dependency>
-
-    <!--Core Selenium-->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-remote-driver</artifactId>
-    </dependency>
-
-
-
-    <!--Core Vaadin Stuff-->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-
-
-    <!--What should be the Vaadin Version? -->
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>testbench-ng-m-container-init-addon-tserver</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-server</artifactId>
-      <version>${vaadin-v08.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-themes</artifactId>
-      <version>${vaadin-v08.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-client-compiled</artifactId>
-      <version>${vaadin-v08.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.vaadin</groupId>
-      <artifactId>addon-test-helpers</artifactId>
-      <version>2.1</version>
-      <scope>test</scope>
-    </dependency>
-
-
   </dependencies>
-
-  <profiles>
-    <profile>
-      <id>-vaadin-addon-testbench-webdrivers</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>com.github.webdriverextensions</groupId>
-            <artifactId>webdriverextensions-maven-plugin</artifactId>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>install-drivers</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <keepDownloadedWebdrivers>true</keepDownloadedWebdrivers>
-              <!--Distributed FS-->
-              <!--<installationDirectory>/Users/andidev/drivers</installationDirectory>-->
-              <installationDirectory>_data/webdrivers</installationDirectory>
-              <drivers>
-                <driver>
-                  <name>chromedriver</name>
-                </driver>
-                <!--<driver>-->
-                  <!--<name>operadriver</name>-->
-                <!--</driver>-->
-                <!--<driver>-->
-                  <!--<name>geckodriver</name>-->
-                <!--</driver>-->
-              </drivers>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-
 </project>

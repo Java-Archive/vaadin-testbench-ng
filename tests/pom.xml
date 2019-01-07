@@ -22,7 +22,7 @@
   <parent>
     <artifactId>rapidpm-vaadin-testbench-ng</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>00.07.07-RPM-SNAPSHOT</version>
+    <version>01.00.00-RPM-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -31,6 +31,11 @@
   <modules>
     <module>vaadin</module>
   </modules>
+
+  <properties>
+    <!--<maven.install.skip>true</maven.install.skip>-->
+    <maven.deploy.skip>true</maven.deploy.skip>
+  </properties>
 
   <!-- Just to disable any accidential deployment to maven.central -->
   <distributionManagement>
@@ -43,6 +48,11 @@
       <url>file://${basedir}/target/snapshot-repo/</url>
     </snapshotRepository>
   </distributionManagement>
+
+
+  <dependencies>
+
+  </dependencies>
 
   <profiles>
     <profile>
@@ -75,9 +85,9 @@
                 <!--<driver>-->
                   <!--<name>operadriver</name>-->
                 <!--</driver>-->
-                <!--<driver>-->
-                  <!--<name>geckodriver</name>-->
-                <!--</driver>-->
+                <driver>
+                  <name>geckodriver</name>
+                </driver>
               </drivers>
             </configuration>
           </plugin>

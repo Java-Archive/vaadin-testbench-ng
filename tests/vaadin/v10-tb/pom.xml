@@ -22,27 +22,19 @@
   <parent>
     <artifactId>testbench-ng-tests-vaadin</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>00.07.07-RPM-SNAPSHOT</version>
+    <version>01.00.00-RPM-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>testbench-ng-tests-vaadin-v10-tb</artifactId>
 
-
   <dependencyManagement>
     <dependencies>
-      <!--&lt;!&ndash;Version definitions from parent&ndash;&gt;-->
-      <!--<dependency>-->
-        <!--<groupId>org.rapidpm</groupId>-->
-        <!--<artifactId>testbench-ng-bom</artifactId>-->
-        <!--<version>00.07.07-RPM-SNAPSHOT</version>-->
-        <!--<scope>import</scope>-->
-        <!--<type>pom</type>-->
-      <!--</dependency>-->
+      <!--Version definitions from parent-->
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-bom-vaadin-v10</artifactId>
-        <version>00.07.07-RPM-SNAPSHOT</version>
+        <artifactId>rapidpm-vaadin-dependencies-bom-v10</artifactId>
+        <version>${rapidpm-vaadin-dependencies.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -83,19 +75,6 @@
       <scope>test</scope>
     </dependency>
 
-
-    <!--TDD-->
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>testbench-ng-m-container-init-meecrowave</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>testbench-ng-m-pageobject-vaadin-generic</artifactId>
-      <scope>test</scope>
-    </dependency>
     <dependency>
       <groupId>org.rapidpm</groupId>
       <artifactId>testbench-ng-m-pageobject-vaadin-v10-tb</artifactId>

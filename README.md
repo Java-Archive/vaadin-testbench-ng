@@ -12,6 +12,12 @@
 [![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=RitUcWEyOFVWZmFGY0tTQ0xyREhKM0M1WWtkeG1wdWFLc2xFWm4rVTBldz0tLXNFRWQzM1NrdG5LMHJWUENxeTdTK1E9PQ==--c72faa283696a22e518e89ca57e90e564b2ad348)](https://www.browserstack.com/automate/public-build/RitUcWEyOFVWZmFGY0tTQ0xyREhKM0M1WWtkeG1wdWFLc2xFWm4rVTBldz0tLXNFRWQzM1NrdG5LMHJWUENxeTdTK1E9PQ==--c72faa283696a22e518e89ca57e90e564b2ad348)
 -->
 
+## 00.07.07-RPM
+* removed the initializer implementations
+    The Container (SpringBootV1/V2, Meecrowave, ...) are not fast enough following the last JDKs
+    Additionally, the most projects needs more sprecialized Conatiners / infrastructure 
+* removed test/demo apps into a separate project
+
 
 ## 00.07.06-RPM
 * version updates

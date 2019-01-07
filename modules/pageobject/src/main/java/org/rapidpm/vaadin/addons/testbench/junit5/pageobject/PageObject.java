@@ -30,6 +30,8 @@ import org.rapidpm.vaadin.addons.webdriver.HasDriver;
 
 public interface PageObject extends HasContainerInfo, HasDriver, HasLogger {
 
+  String BACK_SLASH = "/";
+
   default void loadPage() {
     final String url = url().get();
     logger().info("Navigate browser to " + url);
@@ -67,19 +69,18 @@ public interface PageObject extends HasContainerInfo, HasDriver, HasLogger {
     return () -> property().apply(NetworkFunctions.SERVER_WEBAPP, NetworkFunctions.DEFAULT_SERVLET_WEBAPP);
   }
 
-
   default Supplier<String> baseURL() {
     return () -> protocol().get() + "://" + ip().get() + ":" + port().get();
   }
 
   default Supplier<String> url() {
     return () -> match(
-        matchCase(() -> success("/" + webapp().get() + "/")),
-        matchCase(() -> webapp().get().equals(""), () -> success("/")),
-        matchCase(() -> webapp().get().endsWith("/") && webapp().get().startsWith("/"), () -> success(webapp().get())),
-        matchCase(() -> webapp().get().endsWith("/") && !webapp().get().startsWith("/"), () -> success("/" + webapp().get())),
+        matchCase(() -> success(BACK_SLASH + webapp().get() + BACK_SLASH)),
+        matchCase(() -> webapp().get().equals(""), () -> success(BACK_SLASH)),
+        matchCase(() -> webapp().get().endsWith(BACK_SLASH) && webapp().get().startsWith(BACK_SLASH), () -> success(webapp().get())),
+        matchCase(() -> webapp().get().endsWith(BACK_SLASH) && !webapp().get().startsWith(BACK_SLASH), () -> success(BACK_SLASH + webapp().get())),
 //        matchCase(() -> !webapp().get().endsWith("/") && webapp().get().startsWith("/"), () -> success(webapp().get() + "/")),
-        matchCase(() -> webapp().get().equals("/"), () -> success("/"))
+        matchCase(() -> webapp().get().equals(BACK_SLASH), () -> success(BACK_SLASH))
     )
         .map(e -> baseURL().get() + e)
         .get();

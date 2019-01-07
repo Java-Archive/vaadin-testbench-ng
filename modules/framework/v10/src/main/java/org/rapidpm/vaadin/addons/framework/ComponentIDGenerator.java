@@ -15,6 +15,11 @@
  */
 package org.rapidpm.vaadin.addons.framework;
 
+import static org.rapidpm.vaadin.addons.framework.GenericIDGenerator.genericID;
+
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -26,25 +31,11 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import org.rapidpm.frp.functions.TriFunction;
-
-import java.util.Locale;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 /**
  *
  */
 public interface ComponentIDGenerator {
-
-  static TriFunction<Class, Class, String, String> genericID() {
-    return (uiClass, componentClass, label)
-        -> (uiClass.getSimpleName()
-            + "-" + componentClass.getSimpleName()
-            + "-" + label.replace(" ", "-"))
-        .toLowerCase(Locale.US);
-  }
-
 
   static Function<String, String> caption() {
     return (id) -> id + "." + "caption";
@@ -56,43 +47,43 @@ public interface ComponentIDGenerator {
 
 
   static Function<Class, BiFunction<Class, String, String>> typedComponentIDGenerator() {
-    return (clazz) -> (uiClass, label) -> genericID().apply(uiClass, clazz, label);
+    return (clazz) -> (uiClass , label) -> genericID().apply(uiClass , clazz , label);
   }
 
   static BiFunction<Class, String, String> gridID() {
-    return (uiClass, label) -> genericID().apply(uiClass, Grid.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , Grid.class , label);
   }
 
   static BiFunction<Class, String, String> buttonID() {
-    return (uiClass, label) -> genericID().apply(uiClass, Button.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , Button.class , label);
   }
 
   static BiFunction<Class, String, String> comboBoxID() {
-    return (uiClass, label) -> genericID().apply(uiClass, ComboBox.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , ComboBox.class , label);
   }
 
   static BiFunction<Class, String, String> datePickerID() {
-    return (uiClass, label) -> genericID().apply(uiClass, DatePicker.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , DatePicker.class , label);
   }
 
   static BiFunction<Class, String, String> labelID() {
-    return (uiClass, label) -> genericID().apply(uiClass, Label.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , Label.class , label);
   }
 
   static BiFunction<Class, String, String> spanID() {
-    return (uiClass, label) -> genericID().apply(uiClass, Span.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , Span.class , label);
   }
 
   static BiFunction<Class, String, String> textfieldID() {
-    return (uiClass, label) -> genericID().apply(uiClass, TextField.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , TextField.class , label);
   }
 
   static BiFunction<Class, String, String> passwordID() {
-    return (uiClass, label) -> genericID().apply(uiClass, PasswordField.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , PasswordField.class , label);
   }
 
   static BiFunction<Class, String, String> checkboxID() {
-    return (uiClass, label) -> genericID().apply(uiClass, Checkbox.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , Checkbox.class , label);
   }
 
 //  Layouts
@@ -102,10 +93,10 @@ public interface ComponentIDGenerator {
 //  }
 
   static BiFunction<Class, String, String> verticalLayoutID() {
-    return (uiClass, label) -> genericID().apply(uiClass, VerticalLayout.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , VerticalLayout.class , label);
   }
 
   static BiFunction<Class, String, String> horizontalLayoutID() {
-    return (uiClass, label) -> genericID().apply(uiClass, HorizontalLayout.class, label);
+    return (uiClass , label) -> genericID().apply(uiClass , HorizontalLayout.class , label);
   }
 }

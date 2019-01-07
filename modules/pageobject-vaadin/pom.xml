@@ -22,7 +22,7 @@
   <parent>
     <artifactId>testbench-ng-m</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>00.07.07-RPM-SNAPSHOT</version>
+    <version>01.00.00-RPM-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -32,13 +32,9 @@
 
   <modules>
     <module>generic</module>
-    <module>v08-oss</module>
     <module>v08-tb</module>
-    <module>v10-oss</module>
     <module>v10-tb</module>
-    <module>vXX-tb</module>
   </modules>
-
 
   <dependencies>
     <!--jUnit5-->
@@ -56,17 +52,11 @@
 
     <dependency>
       <groupId>org.rapidpm</groupId>
-      <artifactId>testbench-ng-m-container-init</artifactId>
-    </dependency>
-
-
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>testbench-ng-m-junit5</artifactId>
+      <artifactId>rapidpm-junit5-ext-servlet-container-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.rapidpm</groupId>
-      <artifactId>testbench-ng-m-webdriver</artifactId>
+      <artifactId>rapidpm-selenium-webdriver-management-impl</artifactId>
     </dependency>
 
     <dependency>

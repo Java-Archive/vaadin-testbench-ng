@@ -20,48 +20,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>rapidpm-vaadin-testbench-ng</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>00.07.07-RPM-SNAPSHOT</version>
+    <artifactId>rapidpm-vaadin-testbench-ng</artifactId>
+    <version>01.00.00-RPM-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>testbench-ng-m</artifactId>
   <packaging>pom</packaging>
 
-
   <modules>
     <module>framework</module>
-
-    <module>junit5</module>
-    <module>container</module>
-    <module>webdriver</module>
     <module>pageobject</module>
     <module>pageobject-vaadin</module>
   </modules>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-bom</artifactId>
-        <version>00.07.07-RPM-SNAPSHOT</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-functional-reactive</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.rapidpm</groupId>
-      <artifactId>rapidpm-dependencies-core-logger</artifactId>
-    </dependency>
-
     <!--Version definitions-->
     <dependency>
       <groupId>org.junit.platform</groupId>
