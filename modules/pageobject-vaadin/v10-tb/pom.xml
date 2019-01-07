@@ -22,7 +22,7 @@
   <parent>
     <artifactId>testbench-ng-m-pageobject-vaadin</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>01.00.00-RPM-SNAPSHOT</version>
+    <version>01.00.00-RPM</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -30,14 +30,6 @@
 
   <dependencyManagement>
     <dependencies>
-      <!--Version definitions from parent-->
-      <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-bom</artifactId>
-        <version>${vaadin-v10.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-vaadin-dependencies-bom-v10</artifactId>
