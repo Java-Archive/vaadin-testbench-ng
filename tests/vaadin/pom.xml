@@ -28,14 +28,12 @@
 
   <artifactId>testbench-ng-tests-vaadin</artifactId>
   <packaging>pom</packaging>
-  <modules>
-    <!--<module>v08-oss</module>-->
-    <module>v08-tb</module>
-    <!--<module>v10-oss</module>-->
-    <module>v10-tb</module>
-    <!--<module>vXX-tb</module>-->
-  </modules>
 
+  <modules>
+    <module>v08-tb</module>
+    <module>v10-tb</module>
+    <module>vXX-tb</module>
+  </modules>
 
   <dependencyManagement>
     <dependencies>
