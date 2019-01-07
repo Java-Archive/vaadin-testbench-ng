@@ -149,7 +149,6 @@
         <version>01.00.00-RPM</version>
       </dependency>
 
-
       <dependency>
         <groupId>org.apache.meecrowave</groupId>
         <artifactId>meecrowave-core</artifactId>
