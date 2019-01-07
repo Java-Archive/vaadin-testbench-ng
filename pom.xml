@@ -115,37 +115,37 @@
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-m-framework-generic</artifactId>
+        <artifactId>rapidpm-vaadin-testbench-ng-m-framework-generic</artifactId>
         <version>01.00.00-RPM</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-m-pageobject</artifactId>
+        <artifactId>rapidpm-vaadin-testbench-ng-m-pageobject</artifactId>
         <version>01.00.00-RPM</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-m-pageobject-vaadin-generic</artifactId>
+        <artifactId>rapidpm-vaadin-testbench-ng-m-pageobject-vaadin-generic</artifactId>
         <version>01.00.00-RPM</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-m-pageobject-vaadin-v08-tb</artifactId>
+        <artifactId>rapidpm-vaadin-testbench-ng-m-pageobject-vaadin-v08-tb</artifactId>
         <version>01.00.00-RPM</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-m-pageobject-vaadin-v10-tb</artifactId>
+        <artifactId>rapidpm-vaadin-testbench-ng-m-pageobject-vaadin-v10-tb</artifactId>
         <version>01.00.00-RPM</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-m-framework-v08</artifactId>
+        <artifactId>rapidpm-vaadin-testbench-ng-m-framework-v08</artifactId>
         <version>01.00.00-RPM</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm</groupId>
-        <artifactId>testbench-ng-m-framework-v10</artifactId>
+        <artifactId>rapidpm-vaadin-testbench-ng-m-framework-v10</artifactId>
         <version>01.00.00-RPM</version>
       </dependency>
 
