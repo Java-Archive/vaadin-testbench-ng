@@ -22,10 +22,10 @@ import org.rapidpm.vaadin.addons.testbench.junit5.extensions.unittest.VaadinWebU
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@VaadinWebUnitTest
+
 public class VaadinAppWebUnitTest {
 
-  @TestTemplate
+  @VaadinWebUnitTest
   @DisplayName("Hello World - Click twice")
     //@Disabled("classloader challenges with Atmosphere")
   void test001(VaadinAppPageObject pageObject) {

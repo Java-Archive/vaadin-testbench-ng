@@ -15,6 +15,7 @@
  */
 package org.rapidpm.vaadin.addons.testbench.junit5.extensions.unittest;
 
+import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.rapidpm.vaadin.addons.testbench.junit5.extension.unitest.PageObjectInvocationContextProvider;
 import org.rapidpm.vaadin.addons.testbench.junit5.extension.unitest.PageObjectWebDriverCleanerExtension;
@@ -29,7 +30,7 @@ import java.lang.annotation.Target;
 /**
  *
  */
-@Target({ElementType.TYPE})
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @ExtendWith(ServletContainerExtension.class)
 @ExtendWith(PageObjectInvocationContextProvider.class)
@@ -38,5 +39,6 @@ import java.lang.annotation.Target;
 @ExtendWith(ConvertWebdriverTestExtension.class)
 
 @ExtendWith(PageObjectWebDriverCleanerExtension.class)
+@TestTemplate
 public @interface VaadinWebUnitTest {
 }

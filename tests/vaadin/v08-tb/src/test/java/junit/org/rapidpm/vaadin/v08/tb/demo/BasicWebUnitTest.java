@@ -22,10 +22,10 @@ import org.rapidpm.vaadin.addons.testbench.junit5.extensions.unittest.VaadinWebU
 /**
  *
  */
-@VaadinWebUnitTest
+
 class BasicWebUnitTest {
 
-  @TestTemplate
+  @VaadinWebUnitTest
   void testTemplate(BasicTestPageObject pageObject) {
     pageObject.loadPage();
 

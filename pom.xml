@@ -23,8 +23,8 @@
 
   <parent>
     <groupId>org.rapidpm</groupId>
-    <artifactId>rapidpm-dependencies</artifactId>
-    <version>04.00.11-RPM</version>
+    <artifactId>rapidpm-vaadin-dependencies</artifactId>
+    <version>01.00.01-RPM-SNAPSHOT</version>
   </parent>
 
   <artifactId>rapidpm-vaadin-testbench-ng</artifactId>
@@ -92,7 +92,10 @@
   <modules>
     <module>modules</module>
     <module>tests</module>
+
+    <!--for external useage-->
     <module>bom</module>
+
   </modules>
 
   <repositories>
