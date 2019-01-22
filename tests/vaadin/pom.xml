@@ -22,7 +22,7 @@
   <parent>
     <artifactId>rapidpm-vaadin-testbench-ng-tests</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>01.00.02-RPM-SNAPSHOT</version>
+    <version>01.00.02-RPM</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -67,7 +67,15 @@
     <!--Meecrowave impl-->
     <dependency>
       <groupId>org.apache.meecrowave</groupId>
+      <artifactId>meecrowave-specs-api</artifactId>
+      <version>${meecrowave.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.meecrowave</groupId>
       <artifactId>meecrowave-core</artifactId>
+      <version>${meecrowave.version}</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -75,5 +83,16 @@
     </dependency>
 
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.meecrowave</groupId>
+        <artifactId>meecrowave-maven-plugin</artifactId>
+        <version>${meecrowave.version}</version>
+      </plugin>
+    </plugins>
+  </build>
+
 
 </project>

@@ -22,7 +22,7 @@
   <parent>
     <artifactId>rapidpm-vaadin-testbench-ng</artifactId>
     <groupId>org.rapidpm</groupId>
-    <version>01.00.02-RPM-SNAPSHOT</version>
+    <version>01.00.02-RPM</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -85,9 +85,9 @@
                 <!--<driver>-->
                   <!--<name>operadriver</name>-->
                 <!--</driver>-->
-                <driver>
-                  <name>geckodriver</name>
-                </driver>
+                <!--<driver>-->
+                  <!--<name>geckodriver</name>-->
+                <!--</driver>-->
               </drivers>
             </configuration>
           </plugin>
